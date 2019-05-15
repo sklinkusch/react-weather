@@ -90,6 +90,14 @@ const getTime = (timestamp) => {
   const minute = isoString.substr(14, 2);
   return `${day}/${month}/${year} ${hour}:${minute}`;
 }
+const getDate = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const isoString = date.toISOString();
+  const year = isoString.substr(0, 4);
+  const month = isoString.substr(5, 2);
+  const day = isoString.substr(8, 2);
+  return `${day}/${month}/${year}`;
+}
 
 
-export { getCelsius, getPercent, getDirection, getBeaufort, getTime };
+export { getCelsius, getPercent, getDirection, getBeaufort, getTime, getDate };

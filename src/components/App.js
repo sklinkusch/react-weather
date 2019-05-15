@@ -4,6 +4,7 @@ import Header from './Header';
 import TitleImage from './TitleImage';
 import Current from './Current';
 import Hourly from './Hourly';
+import Daily from './Daily';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <TitleImage />
       <Current />
       <Hourly />
+      <Daily />
     </div>
   );
 }
