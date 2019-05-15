@@ -1,0 +1,23 @@
+.sk-flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  .text-container {
+    flex: 0 0 65%;
+    text-align: left;
+    font-weight: bold;
+  }
+  .img-container {
+    flex: 0 0 30%;
+  }
+}
+#todayImage img {
+  width: 100%;
+}
+ul {
+  margin-left: 0px;
+  padding-left: 0;
+}
+ul li {
+  list-style-position: inside;
+}
