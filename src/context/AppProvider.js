@@ -51,6 +51,7 @@ export default class AppProvider extends Component {
         const selectedValue = event.target.value;
         const cityArray = this.state.cities.filter(city => city.key === selectedValue);
         this.setState({ selectedCity: cityArray[0] });
+        this.fetchData(cityArray[0]);
       },
       weatherData: {}
     }
