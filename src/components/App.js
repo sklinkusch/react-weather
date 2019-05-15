@@ -3,6 +3,7 @@ import '../styles/App.scss';
 import Header from './Header';
 import TitleImage from './TitleImage';
 import Current from './Current';
+import Hourly from './Hourly';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Header />
       <TitleImage />
       <Current />
+      <Hourly />
     </div>
   );
 }
