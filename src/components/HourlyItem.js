@@ -16,7 +16,7 @@ export default function HourlyItem(props) {
         <li>cloud cover: {getPercent(props.data.cloudCover)}</li>
         <li>precipitation probability: {getPercent(props.data.precipProbability)}</li>
         <li>precipitation: {props.data.precipIntensity} mm/h</li>
-        <li>{props.data.precipType && `precipitation type: ${props.data.precipType}`}</li>
+        {props.data.precipType !== undefined && <li>precipitation type: {props.data.precipType}</li>}
         <li>air pressure: {props.data.pressure} mbar</li>
         <li>wind: {getDirection(props.data.windBearing)} {getBeaufort(props.data.windSpeed)} (gusts: {getBeaufort(props.data.windGust)})</li>
         <li>relative humidity: {getPercent(props.data.humidity)}</li>
