@@ -12,7 +12,7 @@ export default function DailyItem(props) {
       </div>
       <ul>
         <li>{props.data.summary}</li>
-        <li>maximum: {getCelsius(props.data.temperatureMax)} (feels like: {getCelsius(props.data.apparentTemperatureMax)}</li>
+        <li>maximum: {getCelsius(props.data.temperatureMax)} (feels like: {getCelsius(props.data.apparentTemperatureMax)})</li>
         <li>minimum: {getCelsius(props.data.temperatureMin)} (feels like: {getCelsius(props.data.apparentTemperatureMin)})</li>
         <li>cloud cover: {getPercent(props.data.cloudCover)}</li>
         <li>precipitation probability: {getPercent(props.data.precipProbability)}</li>

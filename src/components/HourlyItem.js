@@ -12,7 +12,7 @@ export default function HourlyItem(props) {
       </div>
       <ul>
         <li>{props.data.summary}</li>
-        <li>temperature: {getCelsius(props.data.temperature)} (feels like: {getCelsius(props.data.apparentTemperature)}</li>
+        <li>temperature: {getCelsius(props.data.temperature)} (feels like: {getCelsius(props.data.apparentTemperature)})</li>
         <li>cloud cover: {getPercent(props.data.cloudCover)}</li>
         <li>precipitation probability: {getPercent(props.data.precipProbability)}</li>
         <li>precipitation: {props.data.precipIntensity} mm/h</li>
