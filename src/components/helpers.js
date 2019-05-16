@@ -80,15 +80,11 @@ const getBeaufort = (speed) => {
     return "";
   }
 }
-const getTime = (timestamp) => {
+const getTime = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000);
-  const isoString = date.toISOString();
-  const year = isoString.substr(0, 4);
-  const month = isoString.substr(5, 2);
-  const day = isoString.substr(8, 2);
-  const hour = isoString.substr(11, 2);
-  const minute = isoString.substr(14, 2);
-  return `${day}/${month}/${year} ${hour}:${minute}`;
+  const isoString = date.toLocaleString('en-GB', { timeZone: timezone });
+  const outputTime = isoString.substring(0, 17).replace(",", "");
+  return outputTime;
 }
 const getDate = (timestamp) => {
   const date = new Date(timestamp * 1000);

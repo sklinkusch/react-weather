@@ -10,7 +10,7 @@ export default function Hourly() {
         <AppContext.Consumer>
           {context =>
             "hourly" in context.weatherData &&
-            context.weatherData.hourly.data.map((hour, index) => <HourlyItem data={hour} key={index} />)
+            context.weatherData.hourly.data.map((hour, index) => <HourlyItem data={hour} key={index} all={context.weatherData} />)
 
           }
         </AppContext.Consumer>
