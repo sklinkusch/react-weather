@@ -86,13 +86,11 @@ const getTime = (timestamp, timezone) => {
   const outputTime = isoString.substring(0, 17).replace(",", "");
   return outputTime;
 }
-const getDate = (timestamp) => {
+const getDate = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000);
-  const isoString = date.toISOString();
-  const year = isoString.substr(0, 4);
-  const month = isoString.substr(5, 2);
-  const day = isoString.substr(8, 2);
-  return `${day}/${month}/${year}`;
+  const isoString = date.toLocaleString('en-GB', { timeZone: timezone });
+  const outputDate = isoString.substring(0, 10);
+  return outputDate;
 }
 
 

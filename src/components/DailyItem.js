@@ -6,7 +6,7 @@ import { getCelsius, getPercent, getDirection, getBeaufort, getDate } from './he
 export default function DailyItem(props) {
   return (
     <div className="col-md-4">
-      <h2>{getDate(props.data.time)}</h2>
+      <h2>{getDate(props.data.time, props.all.timezone)}</h2>
       <div className="imag">
         <CurrentImage icon={props.data.icon} />
       </div>
