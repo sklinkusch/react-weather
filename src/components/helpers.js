@@ -1,4 +1,4 @@
-const getCelsius = (fahrenheit) => {
+const getCelsius = fahrenheit => {
   // const celsius = ((fahrenheit - 32) * 5) / 9;
   const celsius = fahrenheit;
   if (celsius.toFixed(0) === "-0") {
@@ -6,11 +6,11 @@ const getCelsius = (fahrenheit) => {
   } else {
     return `${celsius.toFixed(0)} °C`;
   }
-}
-const getPercent = (decimal) => {
-  return `${(100 * decimal).toFixed(0)} %`
-}
-const getDirection = (angle) => {
+};
+const getPercent = decimal => {
+  return `${(100 * decimal).toFixed(0)} %`;
+};
+const getDirection = angle => {
   if (angle === undefined) {
     return "";
   } else if (angle >= 0 && angle < 15) {
@@ -48,8 +48,8 @@ const getDirection = (angle) => {
   } else if (angle >= 345) {
     return "N";
   }
-}
-const getBeaufort = (speed) => {
+};
+const getBeaufort = speed => {
   if (speed < 1.85) {
     return "0 Bft";
   } else if (speed < 7.41) {
@@ -68,7 +68,7 @@ const getBeaufort = (speed) => {
     return "7 Bft";
   } else if (speed < 75.93) {
     return "8 Bft";
-  } else if (speed < 88.90) {
+  } else if (speed < 88.9) {
     return "9 Bft";
   } else if (speed < 103.71) {
     return "10 Bft";
@@ -79,19 +79,19 @@ const getBeaufort = (speed) => {
   } else {
     return "";
   }
-}
+};
 const getTime = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000);
-  const isoString = date.toLocaleString('en-GB', { timeZone: timezone });
+  const isoString = date.toLocaleString("en-GB", { timeZone: timezone });
   const outputTime = isoString.substring(0, 17).replace(",", "");
   return outputTime;
-}
+};
 const getDate = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000);
-  const isoString = date.toLocaleString('en-GB', { timeZone: timezone });
-  const outputDate = isoString.substring(0, 10);
+  const day = date.toString().substr(0, 3);
+  const isoString = date.toLocaleString("en-GB", { timeZone: timezone });
+  const outputDate = `${day} ${isoString.substring(0, 10)}`;
   return outputDate;
-}
-
+};
 
 export { getCelsius, getPercent, getDirection, getBeaufort, getTime, getDate };
