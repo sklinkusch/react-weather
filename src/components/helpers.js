@@ -88,10 +88,35 @@ const getTime = (timestamp, timezone) => {
 };
 const getDate = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000);
-  const day = date.toString().substr(0, 3);
   const isoString = date.toLocaleString("en-GB", { timeZone: timezone });
+  const isoDate = new Date(
+    date.toLocaleString("en-US", { timeZone: timezone })
+  );
+  const dayNumber = isoDate.getDay();
+  const day = dayNumberToString(dayNumber);
   const outputDate = `${day} ${isoString.substring(0, 10)}`;
   return outputDate;
+};
+
+const dayNumberToString = number => {
+  switch (number) {
+    case 0:
+      return "Sun";
+    case 1:
+      return "Mon";
+    case 2:
+      return "Tue";
+    case 3:
+      return "Wed";
+    case 4:
+      return "Thu";
+    case 5:
+      return "Fri";
+    case 6:
+      return "Sat";
+    default:
+      return number;
+  }
 };
 
 export { getCelsius, getPercent, getDirection, getBeaufort, getTime, getDate };
