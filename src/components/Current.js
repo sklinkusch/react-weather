@@ -1,6 +1,6 @@
 import React from 'react'
 import AppContext from '../context/AppContext';
-import { getCelsius, getPercent, getDirection, getBeaufort } from './helpers'
+import { getCelsius, getPercent, getDirection, getBeaufort, getTime } from './helpers'
 import "../styles/Current.scss";
 import CurrentImage from './CurrentImage';
 
@@ -16,6 +16,7 @@ export default class Current extends React.Component {
                 <ul>
                   {"currently" in context.weatherData && (
                     <>
+                      <li>current time: {getTime(context.weatherData.currently.time, context.weatherData.timezone)}</li>
                       <li>{context.weatherData.currently.summary}</li>
                       <li>current temperature: {getCelsius(context.weatherData.currently.temperature)}</li>
                       <li>feels like: {getCelsius(context.weatherData.currently.apparentTemperature)}</li>
