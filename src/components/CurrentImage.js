@@ -1,16 +1,16 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable default-case */
-import React from 'react'
-import AppContext from '../context/AppContext';
-import clear from '../images/clear.jpg';
-import clouds from '../images/clouds.jpg';
-import fog from '../images/fog.jpg';
-import rain from '../images/rain.jpg';
-import sleet from '../images/sleet.jpg';
-import snow from '../images/snow.jpg';
-import sun from '../images/sun.jpg';
-import thunderstorm from '../images/thunderstorm.jpg';
-import wind from '../images/wind.jpg';
+import React from "react";
+import AppContext from "../context/AppContext";
+// import clear from '../images/clear.jpg';
+// import clouds from '../images/clouds.jpg';
+// import fog from '../images/fog.jpg';
+// import rain from '../images/rain.jpg';
+// import sleet from '../images/sleet.jpg';
+// import snow from '../images/snow.jpg';
+// import sun from '../images/sun.jpg';
+// import thunderstorm from '../images/thunderstorm.jpg';
+// import wind from '../images/wind.jpg';
 
 export default function CurrentImage(props) {
   return (
@@ -20,49 +20,44 @@ export default function CurrentImage(props) {
           if (props.icon) {
             switch (props.icon) {
               case "rain":
-                return (<img src={rain} alt="rain" />);
-                break;
+                return <i className="wi wi-rain" title="rain" />;
               case "sleet":
-                return (<img src={sleet} alt="sleet" />);
-                break;
+                return <i className="wi wi-sleet" title="sleet" />;
               case "cloudy":
-                return (<img src={clouds} alt="cloudy" />);
-                break;
+                return <i className="wi wi-cloudy" title="cloudy" />;
               case "partly cloudy":
-                return (<img src={clouds} alt="partly cloudy" />);
-                break;
+                return <i className="wi wi-cloud" title="partly cloudy" />;
               case "partly-cloudy-day":
-                return (<img src={clouds} alt="partly-cloudy-day" />);
-                break;
+                return (
+                  <i className="wi wi-day-cloudy" title="partly-cloudy-day" />
+                );
               case "partly-cloudy-night":
-                return (<img src={clouds} alt="partly-cloudy-night" />);
-                break;
+                return (
+                  <i
+                    className="wi wi-night-partly-cloudy"
+                    title="partly-cloudy-night"
+                  />
+                );
               case "clear-day":
-                return (<img src={clear} alt="clear-day" />);
-                break;
+                return <i className="wi wi-day-sunny" title="clear-day" />;
               case "clear-night":
-                return (<img src={clear} alt="clear-night" />);
-                break;
+                return <i className="wi wi-night-clear" title="clear-night" />;
               case "sun":
-                return (<img src={sun} alt="sun" />);
-                break;
+                return <i className="wi wi-day-sunny" title="sun" />;
               case "thunderstorm":
-                return (<img src={thunderstorm} alt="thunderstorm" />);
-                break;
+                return (
+                  <i className="wi wi-thunderstorm" title="thunderstorm" />
+                );
               case "snow":
-                return (<img src={snow} alt="snow" />);
-                break;
+                return <i className="wi wi-snow" title="snow" />;
               case "fog":
-                return (<img src={fog} alt="fog" />);
-                break;
+                return <i className="wi wi-fog" title="fog" />;
               case "wind":
-                return (<img src={wind} alt="wind" />);
-                break;
+                return <i className="wi wi-strong-wind" title="wind" />;
             }
           }
-        }
-        }
+        }}
       </AppContext.Consumer>
     </div>
-  )
+  );
 }

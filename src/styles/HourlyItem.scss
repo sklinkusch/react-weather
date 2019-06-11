@@ -8,8 +8,12 @@
 ul {
   margin-left: 0;
   padding-left: 0;
- li {
-  list-style-position: inside;
-  text-align: left;
+  li {
+    list-style-position: inside;
+    text-align: left;
+  }
 }
+
+.col-md-4 .wi {
+  font-size: 4rem;
 }
