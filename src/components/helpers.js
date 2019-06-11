@@ -1,11 +1,11 @@
 const getCelsius = fahrenheit => {
   // const celsius = ((fahrenheit - 32) * 5) / 9;
   const celsius = fahrenheit;
-  if (celsius.toFixed(0) === "-0") {
-    return `${(-1 * celsius).toFixed(0)} °C`;
-  } else {
-    return `${celsius.toFixed(0)} °C`;
-  }
+  // if (celsius.toFixed(0) === "-0") {
+  // return `${(-1 * celsius).toFixed(0)} °C`;
+  // } else {
+  return `${celsius.toFixed(1)} °C`;
+  // }
 };
 const getPercent = decimal => {
   return `${(100 * decimal).toFixed(0)} %`;
