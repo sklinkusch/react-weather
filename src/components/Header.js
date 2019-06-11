@@ -10,6 +10,8 @@ export default function Header() {
           <select name="placeselect" id="placeselect" onChange={context.handleChange}>
             {context.cities.map((city, index) => (<option key={index} value={city.key}>{city.dropname}</option>))}
           </select>
+          &nbsp;
+          <button onClick={context.handleClick}>Refresh</button>
         </nav>
       )}
     </AppContext.Consumer>

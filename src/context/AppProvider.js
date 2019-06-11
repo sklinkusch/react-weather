@@ -393,7 +393,10 @@ export default class AppProvider extends Component {
         this.setState({ selectedCity: cityArray[0] });
         this.fetchData(cityArray[0]);
       },
-      weatherData: {}
+      weatherData: {},
+      handleClick: () => {
+        this.fetchData(this.state.selectedCity);
+      }
     };
   }
   fetchData = selectedCity => {
