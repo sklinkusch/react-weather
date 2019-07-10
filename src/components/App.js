@@ -12,8 +12,8 @@ function App() {
       <Header />
       <TitleImage />
       <Current />
-      <Hourly />
       <Daily />
+      <Hourly />
     </div>
   );
 }
