@@ -1,24 +1,26 @@
-import React from "react";
-import AppContext from "../context/AppContext";
+import React from "react"
+import AppContext from "../context/AppContext"
 import {
   getCelsius,
   getPercent,
   getDirection,
   getBeaufort,
-  getTime
-} from "./helpers";
-import "../styles/Current.scss";
-import CurrentImage from "./CurrentImage";
+  getTime,
+} from "./helpers"
+import "../styles/Current.scss"
+import CurrentImage from "./CurrentImage"
 
 export default class Current extends React.Component {
   render() {
     return (
       <AppContext.Consumer>
-        {context => (
+        {(context) => (
           <div className="jumbotron">
             <div className="container sk-flex-row">
               <div className="text-container">
-                <h1 className="display-3">{context.selectedCity.name}</h1>
+                {"selectedCity" in context && context.selectedCity && (
+                  <h1 className="display-3">{context.selectedCity.name}</h1>
+                )}
                 <ul>
                   {"currently" in context.weatherData && (
                     <>
@@ -83,6 +85,6 @@ export default class Current extends React.Component {
           </div>
         )}
       </AppContext.Consumer>
-    );
+    )
   }
 }
