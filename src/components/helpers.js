@@ -4,7 +4,7 @@ const getCelsius = (fahrenheit) => {
   // if (celsius.toFixed(0) === "-0") {
   // return `${(-1 * celsius).toFixed(0)} °C`;
   // } else {
-  return `${celsius.toFixed(1)} °C`
+  return `${celsius.toFixed(1)}°C`
   // }
 }
 const getFahrenheit = (celsius) => {
@@ -12,7 +12,7 @@ const getFahrenheit = (celsius) => {
   if (fahrenheit.toFixed(0) === "-0") {
     return `${(-1 * fahrenheit).toFixed(0)} °F`
   } else {
-    return `${fahrenheit.toFixed(1)} °F`
+    return `${fahrenheit.toFixed(1)}°F`
   }
 }
 const getPercent = (decimal) => {
@@ -89,15 +89,25 @@ const getBeaufort = (speed) => {
   }
 }
 const getKph = (speed) => {
-  return `${speed.toFixed(1)} kph`
+  if (speed) {
+    return `${speed.toFixed(1)} kph`
+  }
+  return ""
 }
 const getMph = (speed) => {
-  const mph = speed / 1.609344
-  return `${mph.toFixed(1)} mph`
+  if (speed) {
+    const mph = speed / 1.609344
+    return `${mph.toFixed(1)} mph`
+  }
+  return ""
 }
 const getMiles = (length) => {
   const miles = length / 1.609344
   return `${miles.toFixed(1)} mi`
+}
+const getInch = (length) => {
+  const inch = length / 25.4
+  return `${inch.toFixed(3)}"`
 }
 const getTime = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000)
@@ -145,6 +155,7 @@ export {
   getKph,
   getMph,
   getMiles,
+  getInch,
   getTime,
   getDate,
 }
