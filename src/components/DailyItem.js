@@ -58,7 +58,7 @@ export default function DailyItem(props) {
         </li>
         <li>
           wind gusts: {getBeaufort(props.data.windGust)}/
-          {getKph(props.data.windGusts)}/{getMph(props.data.windGust)}
+          {getKph(props.data.windGust)}/{getMph(props.data.windGust)}
         </li>
         <li>relative humidity: {getPercent(props.data.humidity)}</li>
         <li>

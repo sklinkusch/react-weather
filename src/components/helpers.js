@@ -16,7 +16,7 @@ const getFahrenheit = (celsius) => {
   }
 }
 const getPercent = (decimal) => {
-  return `${(100 * decimal).toFixed(0)} %`
+  return `${(100 * decimal).toFixed(0)}%`
 }
 const getDirection = (angle) => {
   if (angle === undefined) {
@@ -107,7 +107,7 @@ const getMiles = (length) => {
 }
 const getInch = (length) => {
   const inch = length / 25.4
-  return `${inch.toFixed(3)}"`
+  return `${inch.toFixed(4)}"`
 }
 const getTime = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000)
