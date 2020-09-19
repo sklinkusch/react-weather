@@ -1,8 +1,40 @@
-import React, { useRef } from "react"
+import React, { useRef, useContext, useState } from "react"
 import AppContext from "../context/AppContext"
 
 export default function Header() {
   const inputRef = useRef(null)
+  const weatherContext = useContext(AppContext)
+  const remainingCities = weatherContext.cities.filter(
+    (city) => city.key !== weatherContext.selectedCity.key
+  )
+  const [viewData, setViewData] = useState([
+    weatherContext.selectedCity,
+    ...remainingCities,
+  ])
+  const selectCity = (e) => {
+    const key = e.target.value
+    const currentCity = weatherContext.cities.filter(
+      (city) => city.key === key
+    )[0]
+    weatherContext.handleChange(currentCity)
+    const remaining = weatherContext.cities.filter((city) => city.key !== key)
+    const newViewCities = [currentCity, ...remaining]
+    inputRef.current.value = ""
+    setViewData(newViewCities)
+  }
+  const filterData = (e) => {
+    const filterValue = e.target.value
+    const firstFilteredCity = weatherContext.cities.filter(
+      (city) => city.dropname !== weatherContext.selectedCity.dropname
+    )
+    const filteredCities =
+      filterValue && filterValue !== ""
+        ? weatherContext.cities.filter((city) =>
+            city.name.toLowerCase().includes(filterValue.toLowerCase())
+          )
+        : firstFilteredCity.slice()
+    setViewData([weatherContext.selectedCity, ...filteredCities])
+  }
   return (
     <AppContext.Consumer>
       {(context) => (
@@ -15,26 +47,20 @@ export default function Header() {
             name="placefilter"
             style={{ width: "228px" }}
             ref={inputRef}
-            onInput={context.handleFilter}
+            onInput={filterData}
           />
           <select
             name="placeselect"
             id="placeselect"
             style={{ width: "333px" }}
-            onChange={(e) => {
-              context.handleChange(e)
-              inputRef.current.value = ""
-            }}
+            onChange={selectCity}
           >
-            {context.viewCities.map((city, index) => {
-              if (city.key === context.selectedCity.key) {
-                return (
-                  <option key={index} value={city.key} selected>
-                    {city.dropname}
-                  </option>
-                )
-              }
-              return (
+            {viewData.map((city, index) => {
+              return index === 0 ? (
+                <option key={index} value={city.key} selected>
+                  {city.dropname}
+                </option>
+              ) : (
                 <option key={index} value={city.key}>
                   {city.dropname}
                 </option>

@@ -29,29 +29,6 @@ export default class AppProvider extends Component {
             return 0
           }
         }),
-      viewCities: cities
-        .filter((city) => city.population >= 100000)
-        .map((city) => {
-          const { name, lat, lon, country, adminCode, id } = city
-          return {
-            name,
-            dropname: this.getDropName(name, adminCode, country),
-            key: id,
-            lat,
-            lng: lon,
-          }
-        })
-        .sort((cityA, cityB) => {
-          if (cityA.dropname.toLowerCase() < cityB.dropname.toLowerCase()) {
-            return -1
-          } else if (
-            cityB.dropname.toLowerCase() < cityA.dropname.toLowerCase()
-          ) {
-            return +1
-          } else {
-            return 0
-          }
-        }),
       selectedCity: {
         name: "Berlin",
         dropname: "Berlin (DE)",
@@ -59,40 +36,15 @@ export default class AppProvider extends Component {
         lat: "52.52437",
         lng: "13.41053",
       },
-      handleChange: (event) => {
-        const selectedValue = event.target.value
-        const cityArray = this.state.cities.filter(
-          (city) => city.key === selectedValue
-        )
-        const remainingArray = this.state.cities.filter(
-          (city) => city.key !== selectedValue
-        )
+      handleChange: (city) => {
         this.setState({
-          selectedCity: cityArray[0],
-          viewCities: [cityArray[0], ...remainingArray],
+          selectedCity: city,
         })
-        this.fetchData(cityArray[0])
+        this.fetchData(city)
       },
       weatherData: {},
       handleClick: () => {
         this.fetchData(this.state.selectedCity)
-      },
-      handleFilter: (event) => {
-        const filterValue = event.target.value
-        const firstFilteredCity = this.state.cities.filter(
-          (city) => city.dropname !== this.state.selectedCity.dropname
-        )
-        let filteredCities
-        if (!filterValue || filterValue === "") {
-          filteredCities = firstFilteredCity.slice()
-        } else {
-          filteredCities = this.state.cities.filter((city) =>
-            city.name.toLowerCase().includes(filterValue.toLowerCase())
-          )
-        }
-        this.setState({
-          viewCities: [this.state.selectedCity, ...filteredCities],
-        })
       },
     }
   }
