@@ -45,6 +45,8 @@ export default function DailyItem({ data, all }) {
     visibility,
     uvIndex,
     moonPhase,
+    sunriseTime,
+    sunsetTime,
   } = data
   const { timezone, latitude } = all
   return (
@@ -82,7 +84,7 @@ export default function DailyItem({ data, all }) {
         <li>
           maximal precipitation: {precipIntensityMax.toFixed(2)} mm/
           {getInch(precipIntensityMax)} at{" "}
-          {getTime(precipIntensityMaxTime, timezone)}
+          {getTime(precipIntensityMaxTime, timezone).substr(11)}
         </li>
         {precipType !== undefined && <li>precipitation type: {precipType}</li>}
         <li>air pressure: {pressure} mbar</li>
@@ -93,7 +95,7 @@ export default function DailyItem({ data, all }) {
         </li>
         <li>
           wind gusts: {getBeaufort(windGust)}/{getKph(windGust)}/
-          {getMph(windGust)} at {getTime(windGustTime, timezone)}
+          {getMph(windGust)} at {getTime(windGustTime, timezone).substr(11)}
         </li>
         <li>relative humidity: {getPercent(humidity)}</li>
         <li>
@@ -104,6 +106,8 @@ export default function DailyItem({ data, all }) {
           {getMiles(visibility)}
         </li>
         <li>UV index: {uvIndex}</li>
+        <li>sunrise at {getTime(sunriseTime, timezone).substr(11)}</li>
+        <li>sunset at {getTime(sunsetTime, timezone).substr(11)}</li>
         <li>lunar phase: {getMoonPhase(moonPhase, latitude)}</li>
       </ul>
     </div>
