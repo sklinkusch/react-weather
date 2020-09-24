@@ -1,3 +1,5 @@
+import React from "react"
+
 const getCelsius = (fahrenheit) => {
   // const celsius = ((fahrenheit - 32) * 5) / 9;
   const celsius = fahrenheit
@@ -146,6 +148,52 @@ const dayNumberToString = (number) => {
   }
 }
 
+const getMoonPhase = (moon, latitude) => {
+  const styleObject = { fontSize: "1em" }
+  if (moon === 0 || moon === 1) {
+    return <i className="wi wi-moon-new" style={{ ...styleObject }} />
+  } else if (moon > 0 && moon < 0.25) {
+    return latitude >= 0 ? (
+      <i className="wi wi-moon-waxing-crescent-3" style={{ ...styleObject }} />
+    ) : (
+      <i className="wi wi-moon-waning-crescent-3" style={{ ...styleObject }} />
+    )
+  } else if (moon === 0.25) {
+    return latitude >= 0 ? (
+      <i className="wi wi-moon-first-quarter" style={{ ...styleObject }} />
+    ) : (
+      <i className="wi wi-moon-third-quarter" style={{ ...styleObject }} />
+    )
+  } else if (moon > 0.25 && moon < 0.5) {
+    return latitude >= 0 ? (
+      <i className="wi wi-moon-waxing-gibbous-4" style={{ ...styleObject }} />
+    ) : (
+      <i className="wi wi-moon-waning-gibbous-4" style={{ ...styleObject }} />
+    )
+  } else if (moon === 0.5) {
+    return <i className="wi wi-moon-full" style={{ ...styleObject }} />
+  } else if (moon > 0.5 && moon < 0.75) {
+    return latitude >= 0 ? (
+      <i className="wi wi-moon-waning-gibbous-4" style={{ ...styleObject }} />
+    ) : (
+      <i className="wi wi-moon-waxing-gibbous-4" style={{ ...styleObject }} />
+    )
+  } else if (moon === 0.75) {
+    return latitude >= 0 ? (
+      <i className="wi wi-moon-third-quarter" style={{ ...styleObject }} />
+    ) : (
+      <i className="wi wi-moon-first-quarter" style={{ ...styleObject }} />
+    )
+  } else if (moon > 0.75 && moon < 1) {
+    return latitude >= 0 ? (
+      <i className="wi wi-moon-waning-crescent-3" style={{ ...styleObject }} />
+    ) : (
+      <i className="wi wi-moon-waxing-crescent-3" style={{ ...styleObject }} />
+    )
+  }
+  return null
+}
+
 export {
   getCelsius,
   getFahrenheit,
@@ -158,4 +206,5 @@ export {
   getInch,
   getTime,
   getDate,
+  getMoonPhase,
 }

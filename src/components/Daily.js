@@ -1,6 +1,6 @@
-import React from 'react'
-import AppContext from '../context/AppContext';
-import DailyItem from './DailyItem';
+import React from "react"
+import AppContext from "../context/AppContext"
+import DailyItem from "./DailyItem"
 
 export default function Daily() {
   return (
@@ -8,10 +8,11 @@ export default function Daily() {
       <h2>Daily forecast</h2>
       <div className="row">
         <AppContext.Consumer>
-          {context =>
+          {(context) =>
             "daily" in context.weatherData &&
-            context.weatherData.daily.data.map((day, index) => <DailyItem data={day} key={index} all={context.weatherData} />)
-
+            context.weatherData.daily.data.map((day, index) => (
+              <DailyItem data={day} key={index} all={context.weatherData} />
+            ))
           }
         </AppContext.Consumer>
       </div>

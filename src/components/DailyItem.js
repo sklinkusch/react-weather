@@ -12,75 +12,99 @@ import {
   getInch,
   getDate,
   getTime,
+  getMoonPhase,
 } from "./helpers"
 // import "../styles/DailyItem.scss";
 
-export default function DailyItem(props) {
+export default function DailyItem({ data, all }) {
+  const {
+    time,
+    icon,
+    summary,
+    temperatureMax,
+    temperatureMaxTime,
+    temperatureMin,
+    temperatureMinTime,
+    apparentTemperatureMax,
+    apparentTemperatureMaxTime,
+    apparentTemperatureMin,
+    apparentTemperatureMinTime,
+    cloudCover,
+    precipIntensity,
+    precipIntensityMax,
+    precipIntensityMaxTime,
+    precipProbability,
+    precipType,
+    pressure,
+    windBearing,
+    windGust,
+    windGustTime,
+    windSpeed,
+    humidity,
+    dewPoint,
+    visibility,
+    uvIndex,
+    moonPhase,
+  } = data
+  const { timezone, latitude } = all
   return (
     <div className="col-md-4">
-      <h2>{getDate(props.data.time, props.all.timezone)}</h2>
+      <h2>{getDate(time, timezone)}</h2>
       <div className="imag">
-        <CurrentImage icon={props.data.icon} />
+        <CurrentImage icon={icon} />
       </div>
       <ul>
-        <li>{props.data.summary}</li>
+        <li>{summary}</li>
         <li>
-          maximum: {getCelsius(props.data.temperatureMax)}/
-          {getFahrenheit(props.data.temperatureMax)} at{" "}
-          {getTime(props.data.temperatureMaxTime, props.all.timezone)}
+          maximum: {getCelsius(temperatureMax)}/{getFahrenheit(temperatureMax)}{" "}
+          at {getTime(temperatureMaxTime, timezone)}
         </li>
         <li>
-          minimum: {getCelsius(props.data.temperatureMin)}/
-          {getFahrenheit(props.data.temperatureMin)} at{" "}
-          {getTime(props.data.temperatureMinTime, props.all.timezone)}
+          minimum: {getCelsius(temperatureMin)}/{getFahrenheit(temperatureMin)}{" "}
+          at {getTime(temperatureMinTime, timezone)}
         </li>
         <li>
-          apparent maximum: {getCelsius(props.data.apparentTemperatureMax)}/
-          {getFahrenheit(props.data.apparentTemperatureMax)} at{" "}
-          {getTime(props.data.apparentTemperatureMaxTime, props.all.timezone)}
+          apparent maximum: {getCelsius(apparentTemperatureMax)}/
+          {getFahrenheit(apparentTemperatureMax)} at{" "}
+          {getTime(apparentTemperatureMaxTime, timezone)}
         </li>
         <li>
-          apparent minimum: {getCelsius(props.data.apparentTemperatureMin)}/
-          {getFahrenheit(props.data.apparentTemperatureMin)} at{" "}
-          {getTime(props.data.apparentTemperatureMinTime, props.all.timezone)}
+          apparent minimum: {getCelsius(apparentTemperatureMin)}/
+          {getFahrenheit(apparentTemperatureMin)} at{" "}
+          {getTime(apparentTemperatureMinTime, timezone)}
         </li>
-        <li>cloud cover: {getPercent(props.data.cloudCover)}</li>
+        <li>cloud cover: {getPercent(cloudCover)}</li>
+        <li>precipitation probability: {getPercent(precipProbability)}</li>
         <li>
-          precipitation probability: {getPercent(props.data.precipProbability)}
-        </li>
-        <li>
-          daily precipitation: {(24 * props.data.precipIntensity).toFixed(2)}{" "}
-          mm/{getInch(24 * props.data.precipIntensity)}
+          daily precipitation: {(24 * precipIntensity).toFixed(2)} mm/
+          {getInch(24 * precipIntensity)}
         </li>
         <li>
-          maximal precipitation: {props.data.precipIntensityMax.toFixed(2)} mm/
-          {getInch(props.data.precipIntensityMax)} at{" "}
-          {getTime(props.data.precipIntensityMaxTime, props.all.timezone)}
+          maximal precipitation: {precipIntensityMax.toFixed(2)} mm/
+          {getInch(precipIntensityMax)} at{" "}
+          {getTime(precipIntensityMaxTime, timezone)}
         </li>
-        {props.data.precipType !== undefined && (
-          <li>precipitation type: {props.data.precipType}</li>
-        )}
-        <li>air pressure: {props.data.pressure} mbar</li>
-        <li>wind direction: {getDirection(props.data.windBearing)}</li>
+        {precipType !== undefined && <li>precipitation type: {precipType}</li>}
+        <li>air pressure: {pressure} mbar</li>
+        <li>wind direction: {getDirection(windBearing)}</li>
         <li>
-          wind speed: {getBeaufort(props.data.windSpeed)}/
-          {getKph(props.data.windSpeed)}/{getMph(props.data.windSpeed)}
+          wind speed: {getBeaufort(windSpeed)}/{getKph(windSpeed)}/
+          {getMph(windSpeed)}
         </li>
         <li>
-          wind gusts: {getBeaufort(props.data.windGust)}/
-          {getKph(props.data.windGust)}/{getMph(props.data.windGust)} at{" "}
-          {getTime(props.data.windGustTime, props.all.timezone)}
+          wind gusts: {getBeaufort(windGust)}/{getKph(windGust)}/
+          {getMph(windGust)} at {getTime(windGustTime, timezone)}
         </li>
-        <li>relative humidity: {getPercent(props.data.humidity)}</li>
+        <li>relative humidity: {getPercent(humidity)}</li>
         <li>
-          dew point: {getCelsius(props.data.dewPoint)}/
-          {getFahrenheit(props.data.dewPoint)}
+          dew point: {getCelsius(dewPoint)}/{getFahrenheit(dewPoint)}
         </li>
         <li>
-          visibility: {props.data.visibility.toFixed(1)} km/
-          {getMiles(props.data.visibility)}
+          visibility: {visibility.toFixed(1)} km/
+          {getMiles(visibility)}
         </li>
-        <li>UV index: {props.data.uvIndex}</li>
+        <li>UV index: {uvIndex}</li>
+        <li>lunar phase: {getMoonPhase(moonPhase, latitude)}</li>
       </ul>
     </div>
   )
