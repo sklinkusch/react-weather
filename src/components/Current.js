@@ -1,24 +1,30 @@
-import React from "react";
-import AppContext from "../context/AppContext";
+import React from "react"
+import AppContext from "../context/AppContext"
 import {
   getCelsius,
   getPercent,
   getDirection,
   getBeaufort,
-  getTime
-} from "./helpers";
-import "../styles/Current.scss";
-import CurrentImage from "./CurrentImage";
+  getKph,
+  getMph,
+  getTime,
+  getFahrenheit,
+  getMiles,
+} from "./helpers"
+import "../styles/Current.scss"
+import CurrentImage from "./CurrentImage"
 
 export default class Current extends React.Component {
   render() {
     return (
       <AppContext.Consumer>
-        {context => (
+        {(context) => (
           <div className="jumbotron">
             <div className="container sk-flex-row">
               <div className="text-container">
-                <h1 className="display-3">{context.selectedCity.name}</h1>
+                {"selectedCity" in context && context.selectedCity && (
+                  <h1 className="display-3">{context.selectedCity.name}</h1>
+                )}
                 <ul>
                   {"currently" in context.weatherData && (
                     <>
@@ -32,11 +38,18 @@ export default class Current extends React.Component {
                       <li>{context.weatherData.currently.summary}</li>
                       <li>
                         current temperature:{" "}
-                        {getCelsius(context.weatherData.currently.temperature)}
+                        {getCelsius(context.weatherData.currently.temperature)}/
+                        {getFahrenheit(
+                          context.weatherData.currently.temperature
+                        )}
                       </li>
                       <li>
                         feels like:{" "}
                         {getCelsius(
+                          context.weatherData.currently.apparentTemperature
+                        )}
+                        /
+                        {getFahrenheit(
                           context.weatherData.currently.apparentTemperature
                         )}
                       </li>
@@ -55,13 +68,22 @@ export default class Current extends React.Component {
                         mbar
                       </li>
                       <li>
-                        wind:{" "}
+                        wind direction:{" "}
                         {getDirection(
                           context.weatherData.currently.windBearing
-                        )}{" "}
-                        {getBeaufort(context.weatherData.currently.windSpeed)}{" "}
-                        (gusts:{" "}
-                        {getBeaufort(context.weatherData.currently.windGust)})
+                        )}
+                      </li>
+                      <li>
+                        wind speed:{" "}
+                        {getBeaufort(context.weatherData.currently.windSpeed)}/
+                        {getKph(context.weatherData.currently.windSpeed)}/
+                        {getMph(context.weatherData.currently.windSpeed)}
+                      </li>
+                      <li>
+                        wind gusts:{" "}
+                        {getBeaufort(context.weatherData.currently.windGust)}/
+                        {getKph(context.weatherData.currently.windGust)}/
+                        {getMph(context.weatherData.currently.windGust)}
                       </li>
                       <li>
                         relative humidity:{" "}
@@ -69,7 +91,14 @@ export default class Current extends React.Component {
                       </li>
                       <li>
                         dew point:{" "}
-                        {getCelsius(context.weatherData.currently.dewPoint)}
+                        {getCelsius(context.weatherData.currently.dewPoint)}/
+                        {getFahrenheit(context.weatherData.currently.dewPoint)}
+                      </li>
+                      <li>
+                        visibility:{" "}
+                        {context.weatherData.currently.visibility.toFixed(1)}{" "}
+                        km/
+                        {getMiles(context.weatherData.currently.visibility)}
                       </li>
                       <li>UV index: {context.weatherData.currently.uvIndex}</li>
                     </>
@@ -83,6 +112,6 @@ export default class Current extends React.Component {
           </div>
         )}
       </AppContext.Consumer>
-    );
+    )
   }
 }
