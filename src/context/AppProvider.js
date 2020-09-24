@@ -7,7 +7,7 @@ export default class AppProvider extends Component {
     super(props)
     this.state = {
       cities: cities
-        .filter((city) => city.population >= 100000)
+        .filter((city) => city.population >= 50000)
         .map((city) => {
           const { name, lat, lon, country, adminCode, id } = city
           return {
