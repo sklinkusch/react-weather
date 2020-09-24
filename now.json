@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "react-weather",
+  "alias": "weather.sklinkusch.now.sh",
   "builds": [
     {
       "src": "package.json",
