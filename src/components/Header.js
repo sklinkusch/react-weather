@@ -53,14 +53,11 @@ export default function Header() {
             name="placeselect"
             id="placeselect"
             style={{ width: "333px" }}
+            value={context.selectedCity}
             onChange={selectCity}
           >
             {viewData.map((city, index) => {
-              return index === 0 ? (
-                <option key={index} value={city.key} selected>
-                  {city.dropname}
-                </option>
-              ) : (
+              return (
                 <option key={index} value={city.key}>
                   {city.dropname}
                 </option>
