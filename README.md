@@ -4,8 +4,12 @@ This page was created by Stefan Klinkusch at Digital Career Institute in Berlin,
 
 ## Features
 
-It features 
-- a dropdown menu with 39 places around the world
+It features
+
+- an input field to filter the dropdown menu
+- a dropdown that contains all cities in the world with at least 50,000
+  inhabitants
+- a button to obtain the updated weather data for the selected city
 - a title image
 - a jumbotron for the current weather (also by an image, source: [Unsplash](https://unsplash.com))
 - image cards for an hourly forecast for the next two days
