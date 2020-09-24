@@ -11,6 +11,7 @@ import {
   getMiles,
   getInch,
   getDate,
+  getTime,
 } from "./helpers"
 // import "../styles/DailyItem.scss";
 
@@ -25,19 +26,23 @@ export default function DailyItem(props) {
         <li>{props.data.summary}</li>
         <li>
           maximum: {getCelsius(props.data.temperatureMax)}/
-          {getFahrenheit(props.data.temperatureMax)}
+          {getFahrenheit(props.data.temperatureMax)} at{" "}
+          {getTime(props.data.temperatureMaxTime, props.all.timezone)}
         </li>
         <li>
           minimum: {getCelsius(props.data.temperatureMin)}/
-          {getFahrenheit(props.data.temperatureMin)}
+          {getFahrenheit(props.data.temperatureMin)} at{" "}
+          {getTime(props.data.temperatureMinTime, props.all.timezone)}
         </li>
         <li>
           apparent maximum: {getCelsius(props.data.apparentTemperatureMax)}/
-          {getFahrenheit(props.data.apparentTemperatureMax)}
+          {getFahrenheit(props.data.apparentTemperatureMax)} at{" "}
+          {getTime(props.data.apparentTemperatureMaxTime, props.all.timezone)}
         </li>
         <li>
           apparent minimum: {getCelsius(props.data.apparentTemperatureMin)}/
-          {getFahrenheit(props.data.apparentTemperatureMin)}
+          {getFahrenheit(props.data.apparentTemperatureMin)} at{" "}
+          {getTime(props.data.apparentTemperatureMinTime, props.all.timezone)}
         </li>
         <li>cloud cover: {getPercent(props.data.cloudCover)}</li>
         <li>
@@ -46,6 +51,11 @@ export default function DailyItem(props) {
         <li>
           daily precipitation: {(24 * props.data.precipIntensity).toFixed(2)}{" "}
           mm/{getInch(24 * props.data.precipIntensity)}
+        </li>
+        <li>
+          maximal precipitation: {props.data.precipIntensityMax.toFixed(2)} mm/
+          {getInch(props.data.precipIntensityMax)} at{" "}
+          {getTime(props.data.precipIntensityMaxTime, props.all.timezone)}
         </li>
         {props.data.precipType !== undefined && (
           <li>precipitation type: {props.data.precipType}</li>
@@ -58,7 +68,8 @@ export default function DailyItem(props) {
         </li>
         <li>
           wind gusts: {getBeaufort(props.data.windGust)}/
-          {getKph(props.data.windGust)}/{getMph(props.data.windGust)}
+          {getKph(props.data.windGust)}/{getMph(props.data.windGust)} at{" "}
+          {getTime(props.data.windGustTime, props.all.timezone)}
         </li>
         <li>relative humidity: {getPercent(props.data.humidity)}</li>
         <li>
