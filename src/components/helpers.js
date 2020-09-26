@@ -194,6 +194,38 @@ const getMoonPhase = (moon, latitude) => {
   return null
 }
 
+const getTimezone = (offset) => {
+  const sign = offset >= 0 ? "+" : "-"
+  const absolute = Math.abs(offset)
+  let hours = Math.floor(absolute)
+  hours = hours < 10 ? `0${hours}` : `${hours}`
+  const remainder = absolute - hours
+  let minutes = 60 * remainder
+  minutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+  const string = `UTC${sign}${hours}:${minutes}`
+  return string
+}
+
+const getCoordinates = (value, identifier) => {
+  let sign
+  if (identifier === "lat") {
+    sign = value > 0 ? "N" : value < 0 ? "S" : ""
+  } else if (identifier === "lng") {
+    sign = value > 0 ? "E" : value < 0 ? "W" : ""
+  } else {
+    sign = ""
+  }
+  const abs = Math.abs(value)
+  const deg = Math.floor(abs)
+  const degRem = abs - deg
+  const minRaw = 60 * degRem
+  const min = Math.floor(minRaw)
+  const minRem = minRaw - min
+  const sec = 60 * minRem.toFixed(1)
+  const string = `${deg}° ${min}' ${sec}" ${sign}`
+  return string
+}
+
 export {
   getCelsius,
   getFahrenheit,
@@ -207,4 +239,6 @@ export {
   getTime,
   getDate,
   getMoonPhase,
+  getTimezone,
+  getCoordinates,
 }
