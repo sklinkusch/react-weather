@@ -23,7 +23,7 @@ export default class Current extends React.Component {
             <div className="container sk-flex-row">
               <div className="text-container">
                 {"selectedCity" in context && context.selectedCity && (
-                  <h1 className="display-3">{context.selectedCity.name}</h1>
+                  <h1 className="display-3">{context.selectedCity.dropname}</h1>
                 )}
                 <ul>
                   {"currently" in context.weatherData && (
