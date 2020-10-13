@@ -1,4 +1,5 @@
 import React from "react"
+import "weather-icons-lite/css/weather-icons-lite.min.css"
 
 const getCelsius = (fahrenheit) => {
   // const celsius = ((fahrenheit - 32) * 5) / 9;
@@ -154,41 +155,41 @@ const getMoonPhase = (moon, latitude) => {
     return <i className="wi wi-moon-new" style={{ ...styleObject }} />
   } else if (moon > 0 && moon < 0.25) {
     return latitude >= 0 ? (
-      <i className="wi wi-moon-waxing-crescent-3" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wax-cres" style={{ ...styleObject }} />
     ) : (
-      <i className="wi wi-moon-waning-crescent-3" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wan-cres" style={{ ...styleObject }} />
     )
   } else if (moon === 0.25) {
     return latitude >= 0 ? (
-      <i className="wi wi-moon-first-quarter" style={{ ...styleObject }} />
+      <i className="wi wi-moon-first-quart" style={{ ...styleObject }} />
     ) : (
-      <i className="wi wi-moon-third-quarter" style={{ ...styleObject }} />
+      <i className="wi wi-moon-third-quart" style={{ ...styleObject }} />
     )
   } else if (moon > 0.25 && moon < 0.5) {
     return latitude >= 0 ? (
-      <i className="wi wi-moon-waxing-gibbous-4" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wax-gibb" style={{ ...styleObject }} />
     ) : (
-      <i className="wi wi-moon-waning-gibbous-4" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wan-gibb" style={{ ...styleObject }} />
     )
   } else if (moon === 0.5) {
     return <i className="wi wi-moon-full" style={{ ...styleObject }} />
   } else if (moon > 0.5 && moon < 0.75) {
     return latitude >= 0 ? (
-      <i className="wi wi-moon-waning-gibbous-4" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wan-gibb" style={{ ...styleObject }} />
     ) : (
-      <i className="wi wi-moon-waxing-gibbous-4" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wax-gibb" style={{ ...styleObject }} />
     )
   } else if (moon === 0.75) {
     return latitude >= 0 ? (
-      <i className="wi wi-moon-third-quarter" style={{ ...styleObject }} />
+      <i className="wi wi-moon-third-quart" style={{ ...styleObject }} />
     ) : (
-      <i className="wi wi-moon-first-quarter" style={{ ...styleObject }} />
+      <i className="wi wi-moon-first-quart" style={{ ...styleObject }} />
     )
   } else if (moon > 0.75 && moon < 1) {
     return latitude >= 0 ? (
-      <i className="wi wi-moon-waning-crescent-3" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wan-cres" style={{ ...styleObject }} />
     ) : (
-      <i className="wi wi-moon-waxing-crescent-3" style={{ ...styleObject }} />
+      <i className="wi wi-moon-wax-cres" style={{ ...styleObject }} />
     )
   }
   return null
