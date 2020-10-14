@@ -39,11 +39,7 @@ export default function Current() {
                       {getTime(
                         context.weatherData.currently.time,
                         context.weatherData.timezone
-                      )}
-                    </li>
-                    <li>
-                      timezone: {context.weatherData.timezone.replace("_", " ")}{" "}
-                      ({getTimezone(context.weatherData.offset)})
+                      )} ({getTimezone(context.weatherData.offset)})
                     </li>
                     <li>{context.weatherData.currently.summary}</li>
                     <li>
