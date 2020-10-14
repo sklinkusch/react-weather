@@ -6,29 +6,7 @@ export default class AppProvider extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cities: cities
-        .filter((city) => city.population >= 50000)
-        .map((city) => {
-          const { name, lat, lon, country, adminCode, id } = city
-          return {
-            name,
-            dropname: this.getDropName(name, adminCode, country),
-            key: id,
-            lat,
-            lng: lon,
-          }
-        })
-        .sort((cityA, cityB) => {
-          if (cityA.dropname.toLowerCase() < cityB.dropname.toLowerCase()) {
-            return -1
-          } else if (
-            cityB.dropname.toLowerCase() < cityA.dropname.toLowerCase()
-          ) {
-            return +1
-          } else {
-            return 0
-          }
-        }),
+      cities: this.getCities(cities),
       selectedCity: {
         name: "Berlin",
         dropname: "Berlin (DE)",
@@ -47,6 +25,24 @@ export default class AppProvider extends Component {
         this.fetchData(this.state.selectedCity)
       },
     }
+  }
+  getCities = fullList => {
+    const shortArray = fullList.filter(city => city.population >= 25000).map(city => {
+      const { id, name, lat, lon, country, adminCode } = city
+      const newCity = { key: id, name, lat, lng: lon, country, adminCode, dropname: this.getDropName(name, adminCode, country) }
+      return newCity
+    }).sort((cityA, cityB) => {
+      if (cityA.dropname.toLowerCase() < cityB.dropname.toLowerCase()) {
+        return -1
+      } else if (
+        cityB.dropname.toLowerCase() < cityA.dropname.toLowerCase()
+      ) {
+        return +1
+      } else {
+        return 0
+      }
+    })
+    return shortArray
   }
   fetchData = (selectedCity) => {
     if (selectedCity) {
