@@ -2,6 +2,7 @@
 /* eslint-disable default-case */
 import React from "react";
 import AppContext from "../context/AppContext";
+import "weather-icons-lite/css/weather-icons-lite.min.css"
 // import clear from '../images/clear.jpg';
 // import clouds from '../images/clouds.jpg';
 // import fog from '../images/fog.jpg';
@@ -20,40 +21,40 @@ export default function CurrentImage(props) {
           if (props.icon) {
             switch (props.icon) {
               case "rain":
-                return <i className="wi wi-rain" title="rain" />;
+                return <i className="wi wi-darksky-rain" title="rain" />;
               case "sleet":
-                return <i className="wi wi-sleet" title="sleet" />;
+                return <i className="wi wi-darksky-sleet" title="sleet" />;
               case "cloudy":
-                return <i className="wi wi-cloudy" title="cloudy" />;
+                return <i className="wi wi-darksky-cloudy" title="cloudy" />;
               case "partly cloudy":
-                return <i className="wi wi-cloud" title="partly cloudy" />;
+                return <i className="wi wi-darksky-cloud" title="partly cloudy" />;
               case "partly-cloudy-day":
                 return (
-                  <i className="wi wi-day-cloudy" title="partly-cloudy-day" />
+                  <i className="wi wi-darksky-partly-cloudy-day" title="partly-cloudy-day" />
                 );
               case "partly-cloudy-night":
                 return (
                   <i
-                    className="wi wi-night-partly-cloudy"
+                    className="wi wi-darksky-partly-cloudy-night"
                     title="partly-cloudy-night"
                   />
                 );
               case "clear-day":
-                return <i className="wi wi-day-sunny" title="clear-day" />;
+                return <i className="wi wi-darksky-clear-day" title="clear-day" />;
               case "clear-night":
-                return <i className="wi wi-night-clear" title="clear-night" />;
+                return <i className="wi wi-darksky-clear-night" title="clear-night" />;
               case "sun":
-                return <i className="wi wi-day-sunny" title="sun" />;
+                return <i className="wi wi-darksky-clear-day" title="sun" />;
               case "thunderstorm":
                 return (
-                  <i className="wi wi-thunderstorm" title="thunderstorm" />
+                  <i className="wi wi-darksky-thunderstorm" title="thunderstorm" />
                 );
               case "snow":
-                return <i className="wi wi-snow" title="snow" />;
+                return <i className="wi wi-darksky-snow" title="snow" />;
               case "fog":
-                return <i className="wi wi-fog" title="fog" />;
+                return <i className="wi wi-darksky-fog" title="fog" />;
               case "wind":
-                return <i className="wi wi-strong-wind" title="wind" />;
+                return <i className="wi wi-darksky-wind" title="wind" />;
             }
           }
         }}
