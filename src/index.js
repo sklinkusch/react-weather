@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import "bootstrap/scss/bootstrap.scss";
-import "weather-icons-sass/css/weather-icons.min.css";
-import "weather-icons-sass/css/weather-icons-wind.min.css"
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import AppProvider from './context/AppProvider';

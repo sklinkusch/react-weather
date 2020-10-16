@@ -1,4 +1,3 @@
-import "weather-icons-lite/css/weather-icons-lite.min.css"
 
 const getCelsius = (fahrenheit) => {
   // const celsius = ((fahrenheit - 32) * 5) / 9;

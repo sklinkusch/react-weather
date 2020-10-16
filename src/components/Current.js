@@ -107,7 +107,7 @@ export default function Current() {
               </ul>
             </div>
             {"currently" in context.weatherData && (
-              <CurrentImage icon={context.weatherData.currently.icon} />
+              <CurrentImage icon={context.weatherData.currently.icon} style={{ fontSize: "152px"}} />
             )}
           </div>
         </div>

@@ -53,7 +53,7 @@ export default function DailyItem({ data, all }) {
     <div className="col-md-4">
       <h2>{getDate(time, timezone)}</h2>
       <div className="imag">
-        <CurrentImage icon={icon} />
+        <CurrentImage icon={icon} style={{ fontSize: "96px"}} />
       </div>
       <ul>
         <li>{summary}</li>

@@ -19,7 +19,7 @@ export default function HourlyItem(props) {
     <div className="col-md-4">
       <h2>{getTime(props.data.time, props.all.timezone)}</h2>
       <div className="imag">
-        <CurrentImage icon={props.data.icon} />
+        <CurrentImage icon={props.data.icon}  style={{ fontSize: "96px" }} />
       </div>
       <ul>
         <li>{props.data.summary}</li>
