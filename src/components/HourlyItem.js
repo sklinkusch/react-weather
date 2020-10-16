@@ -4,14 +4,14 @@ import {
   getCelsius,
   getFahrenheit,
   getPercent,
-  getDirection,
-  getBeaufort,
-  getKph,
-  getMph,
   getMiles,
   getInch,
   getTime,
 } from "./helpers"
+import {getDirection,
+  getBeaufort,
+  getKph,
+  getMph,} from "./wind"
 import "../styles/HourlyItem.scss"
 
 export default function HourlyItem(props) {

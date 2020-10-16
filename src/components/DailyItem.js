@@ -4,16 +4,16 @@ import {
   getCelsius,
   getFahrenheit,
   getPercent,
-  getDirection,
-  getBeaufort,
-  getKph,
-  getMph,
   getMiles,
   getInch,
   getDate,
   getTime,
   getMoonPhase,
 } from "./helpers"
+import {getDirection,
+  getBeaufort,
+  getKph,
+  getMph,} from "./wind"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all }) {

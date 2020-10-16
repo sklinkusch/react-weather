@@ -3,16 +3,16 @@ import AppContext from "../context/AppContext"
 import {
   getCelsius,
   getPercent,
-  getDirection,
-  getBeaufort,
-  getKph,
-  getMph,
   getTime,
   getFahrenheit,
   getMiles,
   getTimezone,
   getCoordinates,
 } from "./helpers"
+import { getDirection,
+  getBeaufort,
+  getKph,
+  getMph,} from "./wind"
 import "../styles/Current.scss"
 import CurrentImage from "./CurrentImage"
 
