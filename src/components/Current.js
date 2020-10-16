@@ -68,7 +68,7 @@ export default function Current() {
                       )}
                     </li>
                     <li>
-                      air pressure: {context.weatherData.currently.pressure}{" "}
+                      air pressure: {context.weatherData.currently.pressure.toFixed(1)}{" "}
                       mbar
                     </li>
                     <li>

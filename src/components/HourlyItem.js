@@ -42,7 +42,7 @@ export default function HourlyItem(props) {
         {props.data.precipType !== undefined && (
           <li>precipitation type: {props.data.precipType}</li>
         )}
-        <li>air pressure: {props.data.pressure} mbar</li>
+        <li>air pressure: {props.data.pressure.toFixed(1)} mbar</li>
         <li>wind direction: {getDirection(props.data.windBearing)}</li>
         <li>
           wind speed: {getBeaufort(props.data.windSpeed)}/

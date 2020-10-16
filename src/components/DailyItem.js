@@ -87,7 +87,7 @@ export default function DailyItem({ data, all }) {
           {getTime(precipIntensityMaxTime, timezone).substr(11)}
         </li>
         {precipType !== undefined && <li>precipitation type: {precipType}</li>}
-        <li>air pressure: {pressure} mbar</li>
+        <li>air pressure: {pressure.toFixed(1)} mbar</li>
         <li>wind direction: {getDirection(windBearing)}</li>
         <li>
           wind speed: {getBeaufort(windSpeed)}/{getKph(windSpeed)}/
