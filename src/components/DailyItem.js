@@ -8,8 +8,8 @@ import {
   getInch,
   getDate,
   getTime,
-  getMoonPhase,
 } from "./helpers"
+import { getMoonPhase } from "./moon"
 import {getDirection,
   getBeaufort,
   getKph,
