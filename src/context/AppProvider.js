@@ -9,6 +9,8 @@ export default class AppProvider extends Component {
       cities: this.getCities(cities),
       selectedCity: {
         name: "Berlin",
+        adminCode: 16,
+        country: "DE",
         dropname: "Berlin (DE)",
         key: "2950159",
         lat: "52.52437",
