@@ -16,7 +16,7 @@ import "../styles/HourlyItem.scss"
 
 export default function HourlyItem(props) {
   return (
-    <div className="col-md-4">
+    <div className="col-lg-4 col-md-6 col-sm-12">
       <h2>{getTime(props.data.time, props.all.timezone)}</h2>
       <div className="imag">
         <CurrentImage icon={props.data.icon}  style={{ fontSize: "96px" }} />

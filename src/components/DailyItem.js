@@ -50,7 +50,7 @@ export default function DailyItem({ data, all }) {
   } = data
   const { timezone, latitude } = all
   return (
-    <div className="col-md-4">
+    <div className="col-lg-4 col-md-6 col-sm-12">
       <h2>{getDate(time, timezone)}</h2>
       <div className="imag">
         <CurrentImage icon={icon} style={{ fontSize: "96px"}} />
