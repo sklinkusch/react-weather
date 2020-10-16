@@ -1,5 +1,5 @@
 import React from "react"
-import { WiWindDeg, WiMoonNew } from "weather-icons-react"
+import { WiWindDeg, WiMoonNew, WiWindBeaufort0, WiWindBeaufort1, WiWindBeaufort2, WiWindBeaufort3, WiWindBeaufort4, WiWindBeaufort5, WiWindBeaufort6, WiWindBeaufort7, WiWindBeaufort8, WiWindBeaufort9, WiWindBeaufort10, WiWindBeaufort11, WiWindBeaufort12 } from "weather-icons-react"
 
 const getDirection = (angle) => {
   if(typeof angle === "number"){
@@ -11,34 +11,35 @@ const getDirection = (angle) => {
   return <WiMoonNew style={{...styleObject}} />
 }
 const getBeaufort = (speed) => {
+  const styleObject = { fontSize: "1.6em" }
   if (speed < 1.85) {
-    return "0 Bft"
+    return <WiWindBeaufort0 style={{...styleObject}} />
   } else if (speed < 7.41) {
-    return "1 Bft"
+    return <WiWindBeaufort1 style={{...styleObject}} />
   } else if (speed < 12.96) {
-    return "2 Bft"
+    return <WiWindBeaufort2 style={{...styleObject}} />
   } else if (speed < 20.37) {
-    return "3 Bft"
+    return <WiWindBeaufort3 style={{...styleObject}} />
   } else if (speed < 29.63) {
-    return "4 Bft"
+    return <WiWindBeaufort4 style={{...styleObject}} />
   } else if (speed < 40.74) {
-    return "5 Bft"
+    return <WiWindBeaufort5 style={{...styleObject}} />
   } else if (speed < 51.86) {
-    return "6 Bft"
+    return <WiWindBeaufort6 style={{...styleObject}} />
   } else if (speed < 62.97) {
-    return "7 Bft"
+    return <WiWindBeaufort7 style={{...styleObject}} />
   } else if (speed < 75.93) {
-    return "8 Bft"
+    return <WiWindBeaufort8 style={{...styleObject}} />
   } else if (speed < 88.9) {
-    return "9 Bft"
+    return <WiWindBeaufort9 style={{...styleObject}} />
   } else if (speed < 103.71) {
-    return "10 Bft"
+    return <WiWindBeaufort10 style={{...styleObject}} />
   } else if (speed < 118.53) {
-    return "11 Bft"
+    return <WiWindBeaufort11 style={{...styleObject}} />
   } else if (speed >= 118.53) {
-    return "12 Bft"
+    return <WiWindBeaufort12 style={{...styleObject}} />
   } else {
-    return ""
+    return "?"
   }
 }
 const getKph = (speed) => {
