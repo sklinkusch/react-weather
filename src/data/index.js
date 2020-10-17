@@ -19,6 +19,7 @@ import India from "./India"
 import Indonesia from "./Indonesia"
 import Jamaica from "./Jamaica"
 import Mexico from "./Mexico"
+import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
 import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 
@@ -45,6 +46,7 @@ const countryObject = {
   JM: Jamaica,
   MO: Macau,
   MX: Mexico,
+  NG: Nigeria,
   PK: Pakistan,
   PR: PuertoRico,
   SV: ElSalvador,
