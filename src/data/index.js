@@ -22,6 +22,7 @@ import Jamaica from "./Jamaica"
 import Mexico from "./Mexico"
 import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
+import Russia from "./Russia"
 import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 
 const countryObject = {
@@ -51,9 +52,10 @@ const countryObject = {
   NG: Nigeria,
   PK: Pakistan,
   PR: PuertoRico,
+  RU: Russia,
   SV: ElSalvador,
-  VI: AmericanVirginIslands,
   US: UnitedStates,
+  VI: AmericanVirginIslands,
 }
 
 export const getCountry = countryCode => {
