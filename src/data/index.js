@@ -1,5 +1,6 @@
 import AntiguaAndBarbuda from "./AntiguaAndBarbuda"
 import Bahamas from "./Bahamas"
+import Bangladesh from "./Bangladesh"
 import Barbados from "./Barbados"
 import Belize from "./Belize"
 import Brazil from "./Brazil"
@@ -26,6 +27,7 @@ import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 const countryObject = {
   AG: AntiguaAndBarbuda,
   BB: Barbados,
+  BD: Bangladesh,
   BR: Brazil,
   BS: Bahamas,
   BZ: Belize,
