@@ -55,4 +55,18 @@ const UnitedStates = {
   }
 }
 
+export const PuertoRico = {
+  countryName: "United States of America",
+  adminCodes: {
+    "127": "Puerto Rico",
+  }
+}
+
+export const AmericanVirginIslands = {
+  countryName: "United States of America",
+  adminCodes: {
+    "030": "Virgin Islands",
+  }
+}
+
 export default UnitedStates
