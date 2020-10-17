@@ -15,6 +15,7 @@ import Guatemala from "./Guatemala"
 import Haiti from "./Haiti"
 import Honduras from "./Honduras"
 import India from "./India"
+import Indonesia from "./Indonesia"
 import Jamaica from "./Jamaica"
 import Mexico from "./Mexico"
 import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
@@ -36,6 +37,7 @@ const countryObject = {
   HK: HongKong,
   HN: Honduras,
   HT: Haiti,
+  ID: Indonesia,
   IN: India,
   JM: Jamaica,
   MO: Macau,
