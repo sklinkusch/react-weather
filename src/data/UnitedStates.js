@@ -57,16 +57,12 @@ const UnitedStates = {
 
 export const PuertoRico = {
   countryName: "United States of America",
-  adminCodes: {
-    "127": "Puerto Rico",
-  }
+  adminCodes: "Puerto Rico",
 }
 
 export const AmericanVirginIslands = {
   countryName: "United States of America",
-  adminCodes: {
-    "030": "Virgin Islands",
-  }
+  adminCodes: "Virgin Islands",
 }
 
 export default UnitedStates

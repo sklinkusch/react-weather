@@ -36,16 +36,12 @@ const ChinaPR = {
 
 export const HongKong = {
   countryName: "People's Republic of China",
-  adminCodes: {
-    HCW: "Hong Kong",
-  }
+  adminCodes: "Hong Kong",
 }
 
 export const Macau = {
   countryName: "People's Republic of China",
-  adminCodes: {
-    "02": "Macau",
-  }
+  adminCodes: "Macau",
 }
 
 export default ChinaPR
