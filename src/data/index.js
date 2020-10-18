@@ -19,6 +19,7 @@ import Honduras from "./Honduras"
 import India from "./India"
 import Indonesia from "./Indonesia"
 import Jamaica from "./Jamaica"
+import Japan from "./Japan"
 import Mexico from "./Mexico"
 import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
@@ -47,6 +48,7 @@ const countryObject = {
   ID: Indonesia,
   IN: India,
   JM: Jamaica,
+  JP: Japan,
   MO: Macau,
   MX: Mexico,
   NG: Nigeria,
