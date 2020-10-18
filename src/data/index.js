@@ -24,6 +24,7 @@ import Japan from "./Japan"
 import Mexico from "./Mexico"
 import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
+import Philippines from "./Philippines"
 import Russia from "./Russia"
 import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 
@@ -54,6 +55,7 @@ const countryObject = {
   MO: Macau,
   MX: Mexico,
   NG: Nigeria,
+  PH: Philippines,
   PK: Pakistan,
   PR: PuertoRico,
   RU: Russia,
