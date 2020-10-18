@@ -1,5 +1,5 @@
 const Mexico = {
-  countryName: "Mexico",
+  countryName: "United Mexican States",
   adminCodes: {
     "01": "Aguascalientes",
     "02": "Baja California",

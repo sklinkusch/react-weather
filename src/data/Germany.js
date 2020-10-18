@@ -1,5 +1,5 @@
 const Germany = {
-  countryName: "Germany",
+  countryName: "Federal Republic of Germany",
   adminCodes: {
     "01": "Baden-Württemberg",
     "02": "Bavaria",

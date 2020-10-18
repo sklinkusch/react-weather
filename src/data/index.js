@@ -11,6 +11,7 @@ import Cuba from "./Cuba"
 import Dominica from "./Dominica"
 import DominicanRepublic from "./DominicanRepublic"
 import ElSalvador from "./ElSalvador"
+import Ethiopia from "./Ethiopia"
 import Germany from "./Germany"
 import Grenada from "./Grenada"
 import Guatemala from "./Guatemala"
@@ -40,6 +41,7 @@ const countryObject = {
   DE: Germany,
   DM: Dominica,
   DO: DominicanRepublic,
+  ET: Ethiopia,
   GD: Grenada,
   GT: Guatemala,
   HK: HongKong,
