@@ -26,6 +26,7 @@ import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
 import Philippines from "./Philippines"
 import Russia from "./Russia"
+import UnitedKingdom, {IsleOfMan, Guernsey, Jersey, CaymanIslands, Gibraltar} from "./UnitedKingdom"
 import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 
 const countryObject = {
@@ -43,15 +44,21 @@ const countryObject = {
   DM: Dominica,
   DO: DominicanRepublic,
   ET: Ethiopia,
+  GB: UnitedKingdom,
   GD: Grenada,
+  GG: Guernsey,
+  GI: Gibraltar,
   GT: Guatemala,
   HK: HongKong,
   HN: Honduras,
   HT: Haiti,
   ID: Indonesia,
+  IM: IsleOfMan,
   IN: India,
+  JE: Jersey,
   JM: Jamaica,
   JP: Japan,
+  KY: CaymanIslands,
   MO: Macau,
   MX: Mexico,
   NG: Nigeria,
@@ -69,5 +76,14 @@ export const getCountry = countryCode => {
 }
 
 export const getAdminDiv = (countryCode, adminCode) => {
-  return countryObject[countryCode].adminCodes[adminCode] || adminCode
+  const { adminCodes } = countryObject
+  if(adminCodes){
+    if(typeof adminCodes === "string"){
+      return adminCodes
+    } else {
+      return adminCodes[adminCode]
+    }
+  } else {
+    return adminCode
+  }  
 }
