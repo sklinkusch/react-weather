@@ -26,16 +26,21 @@ export default class AppProvider extends Component {
       handleClick: () => {
         this.fetchData(this.state.selectedCity)
       },
-      unit: ""
+      unit: "",
+      setUnit: myUnit => {
+        localStorage.setItem('unit', myUnit)
+        this.setState({unit: myUnit})
+      }
     }
   }
-  setUnit = myUnit => {
-    localStorage.setItem('unit', myUnit)
-    this.setState({unit: myUnit})
-  }
   setInitialUnit = () => {
-    const initialUnit = localStorage.getItem('unit') || "celsius"
-    this.setUnit(initialUnit)
+    const initialUnit = localStorage.getItem('unit')
+    if(initialUnit){
+      this.setState({unit: initialUnit})
+    } else {
+      localStorage.setItem('unit', 'celsius')
+      this.setState({unit: "celsius"})
+    }
   }
   getCities = fullList => {
     const shortArray = fullList.filter(city => city.population >= 25000).map(city => {
