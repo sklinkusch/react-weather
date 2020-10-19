@@ -76,7 +76,7 @@ export const getCountry = countryCode => {
 }
 
 export const getAdminDiv = (countryCode, adminCode) => {
-  const { adminCodes } = countryObject
+  const { adminCodes } = countryObject[countryCode]
   if(adminCodes){
     if(typeof adminCodes === "string"){
       return adminCodes
