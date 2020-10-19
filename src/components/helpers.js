@@ -45,10 +45,23 @@ const getLength = (length, unit) => {
     return getMiles(length)
   }
 }
+const getMm = (length) => {
+  return `${length.toFixed(2)} mm`
+}
+
 const getInch = (length) => {
   const inch = length / 25.4
   return `${inch.toFixed(4)}"`
 }
+
+const getPrecip = (length, unit) => {
+  if(unit === "celsius"){
+    return getMm(length)
+  } else {
+    return getInch(length)
+  }
+}
+
 const getTime = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000)
   const isoString = date.toLocaleString("en-GB", { timeZone: timezone })
@@ -126,6 +139,7 @@ export {
   getMiles,
   getLength,
   getInch,
+  getPrecip,
   getTime,
   getDate,
   getTimezone,
