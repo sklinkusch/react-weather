@@ -1,18 +1,16 @@
 import React, {Fragment} from "react"
 import AppContext from "../context/AppContext"
 import {
-  getCelsius,
   getPercent,
   getTime,
-  getFahrenheit,
-  getMiles,
+  getTemperature,
+  getLength,
   getTimezone,
   getCoordinates,
 } from "./helpers"
 import { getDirection,
   getBeaufort,
-  getKph,
-  getMph,} from "./wind"
+  getVelocity} from "./wind"
 import "../styles/Current.scss"
 import CurrentImage from "./CurrentImage"
 import { getCountry, getAdminDiv } from "../data/"
@@ -44,17 +42,12 @@ const CurrentDesktop = () => (
                     <li>{context.weatherData.currently.summary}</li>
                     <li>
                       current temperature:{" "}
-                      {getCelsius(context.weatherData.currently.temperature)}/
-                      {getFahrenheit(context.weatherData.currently.temperature)}
+                      {getTemperature(context.weatherData.currently.temperature, context.unit)}
                     </li>
                     <li>
                       feels like:{" "}
-                      {getCelsius(
-                        context.weatherData.currently.apparentTemperature
-                      )}
-                      /
-                      {getFahrenheit(
-                        context.weatherData.currently.apparentTemperature
+                      {getTemperature(
+                        context.weatherData.currently.apparentTemperature, context.unit
                       )}
                     </li>
                     <li>
@@ -77,15 +70,13 @@ const CurrentDesktop = () => (
                     </li>
                     <li>
                       wind speed:{" "}
-                      {getBeaufort(context.weatherData.currently.windSpeed)}/
-                      {getKph(context.weatherData.currently.windSpeed)}/
-                      {getMph(context.weatherData.currently.windSpeed)}
+                      {getBeaufort(context.weatherData.currently.windSpeed)}{" "}
+                      ({getVelocity(context.weatherData.currently.windSpeed,context.unit)})
                     </li>
                     <li>
                       wind gusts:{" "}
-                      {getBeaufort(context.weatherData.currently.windGust)}/
-                      {getKph(context.weatherData.currently.windGust)}/
-                      {getMph(context.weatherData.currently.windGust)}
+                      {getBeaufort(context.weatherData.currently.windGust)}{" "}
+                      ({getVelocity(context.weatherData.currently.windGust,context.unit)})
                     </li>
                     <li>
                       relative humidity:{" "}
@@ -93,13 +84,11 @@ const CurrentDesktop = () => (
                     </li>
                     <li>
                       dew point:{" "}
-                      {getCelsius(context.weatherData.currently.dewPoint)}/
-                      {getFahrenheit(context.weatherData.currently.dewPoint)}
+                      {getTemperature(context.weatherData.currently.dewPoint, context.unit)}
                     </li>
                     <li>
                       visibility:{" "}
-                      {context.weatherData.currently.visibility.toFixed(1)} km/
-                      {getMiles(context.weatherData.currently.visibility)}
+                      {getLength(context.weatherData.currently.visibility, context.unit)}
                     </li>
                     <li>UV index: {context.weatherData.currently.uvIndex}</li>
                   </>
@@ -148,18 +137,11 @@ const CurrentMobile = () => (
                     <li>{context.weatherData.currently.summary}</li>
                     <li>
                       current temperature:{" "}
-                      {getCelsius(context.weatherData.currently.temperature)}/
-                      {getFahrenheit(context.weatherData.currently.temperature)}
+                      {getTemperature(context.weatherData.currently.temperature, context.unit)}
                     </li>
                     <li>
                       feels like:{" "}
-                      {getCelsius(
-                        context.weatherData.currently.apparentTemperature
-                      )}
-                      /
-                      {getFahrenheit(
-                        context.weatherData.currently.apparentTemperature
-                      )}
+                      {getTemperature(context.weatherData.currently.apparentTemperature, context.unit)}
                     </li>
                     <li>
                       cloud cover:{" "}
@@ -181,15 +163,13 @@ const CurrentMobile = () => (
                     </li>
                     <li>
                       wind speed:{" "}
-                      {getBeaufort(context.weatherData.currently.windSpeed)}/
-                      {getKph(context.weatherData.currently.windSpeed)}/
-                      {getMph(context.weatherData.currently.windSpeed)}
+                      {getBeaufort(context.weatherData.currently.windSpeed)}{" "}
+                      ({getVelocity(context.weatherData.currently.windSpeed, context.unit)})
                     </li>
                     <li>
                       wind gusts:{" "}
-                      {getBeaufort(context.weatherData.currently.windGust)}/
-                      {getKph(context.weatherData.currently.windGust)}/
-                      {getMph(context.weatherData.currently.windGust)}
+                      {getBeaufort(context.weatherData.currently.windGust)}{" "}
+                      ({getVelocity(context.weatherData.currently.windGust, context.unit)})
                     </li>
                     <li>
                       relative humidity:{" "}
@@ -197,13 +177,11 @@ const CurrentMobile = () => (
                     </li>
                     <li>
                       dew point:{" "}
-                      {getCelsius(context.weatherData.currently.dewPoint)}/
-                      {getFahrenheit(context.weatherData.currently.dewPoint)}
+                      {getTemperature(context.weatherData.currently.dewPoint, context.unit)}
                     </li>
                     <li>
                       visibility:{" "}
-                      {context.weatherData.currently.visibility.toFixed(1)} km/
-                      {getMiles(context.weatherData.currently.visibility)}
+                      {getLength(context.weatherData.currently.visibility, context.unit)}
                     </li>
                     <li>UV index: {context.weatherData.currently.uvIndex}</li>
                   </>
