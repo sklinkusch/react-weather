@@ -16,12 +16,34 @@ const getFahrenheit = (celsius) => {
     return `${fahrenheit.toFixed(1)}°F`
   }
 }
+
+const getTemperature = (temperature, unit) => {
+  if (unit === "celsius"){
+    return getCelsius(temperature)
+  } else {
+    return getFahrenheit(temperature)
+  }
+}
+
 const getPercent = (decimal) => {
   return `${(100 * decimal).toFixed(0)}%`
 }
+
+const getKilometers = (length) => {
+  return `${length.toFixed(1)} km`
+}
+
 const getMiles = (length) => {
   const miles = length / 1.609344
   return `${miles.toFixed(1)} mi`
+}
+
+const getLength = (length, unit) => {
+  if(unit === "celsius"){
+    return getKilometers(length)
+  } else {
+    return getMiles(length)
+  }
 }
 const getInch = (length) => {
   const inch = length / 25.4
@@ -99,8 +121,10 @@ const getCoordinates = (value, identifier) => {
 export {
   getCelsius,
   getFahrenheit,
+  getTemperature,
   getPercent,
   getMiles,
+  getLength,
   getInch,
   getTime,
   getDate,
