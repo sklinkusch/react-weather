@@ -25,6 +25,10 @@ export default function Header() {
     inputRef.current.value = ""
     setViewData(newViewCities)
   }
+  const selectUnit = (e) => {
+    const unit = e.target.value
+    weatherContext.setUnit(unit)
+  }
   const filterData = (e) => {
     const filterValue = e.target.value
     const firstFilteredCity = weatherContext.cities.filter(
@@ -71,6 +75,10 @@ export default function Header() {
           </select>
           &nbsp;
           <button onClick={context.handleClick}>Refresh</button>
+          <select value={context.unit} onChange={selectUnit}>
+            <option value="celsius">°C</option>
+            <option value="fahrenheit">°F</option>
+          </select>
           </Collapse>
         </Navbar>
       )}
