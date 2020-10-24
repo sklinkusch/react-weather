@@ -12,7 +12,7 @@ import { getMoonPhase } from "./moon"
 import {getDirection,
   getBeaufort,
   getVelocity} from "./wind"
-import { PersistentPrecipWarning, WindWarning } from "./Warning"
+import { LowTemperatureWarning, HighTemperatureWarning, PersistentPrecipWarning, WindWarning } from "./Warning"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all, unit }) {
@@ -58,7 +58,8 @@ export default function DailyItem({ data, all, unit }) {
         <li>{summary}</li>
         <li>
           maximum: {getTemperature(temperatureMax, unit)}{" "}
-          at {getTime(temperatureMaxTime, timezone)}
+          at {getTime(temperatureMaxTime, timezone)}{" "}
+          <LowTemperatureWarning temperature={temperatureMax} />
         </li>
         <li>
           minimum: {getTemperature(temperatureMin, unit)}{" "}
@@ -66,7 +67,8 @@ export default function DailyItem({ data, all, unit }) {
         </li>
         <li>
           apparent maximum: {getTemperature(apparentTemperatureMax, unit)} at{" "}
-          {getTime(apparentTemperatureMaxTime, timezone)}
+          {getTime(apparentTemperatureMaxTime, timezone)}{" "}
+          <HighTemperatureWarning temperature={apparentTemperatureMax} />
         </li>
         <li>
           apparent minimum: {getTemperature(apparentTemperatureMin, unit)} at{" "}

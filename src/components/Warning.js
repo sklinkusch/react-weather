@@ -51,7 +51,65 @@ const PersistentPrecipWarning = ({precipType, precipIntensity}) => {
     } else {
       return ""
     }
+  } else if (precipType === "snow"){
+    if(precipIntensity > 0 && precipIntensity <= 150){
+      return <Warning style={{color: "yellow"}} title="Light snowfall" />
+    } else if(precipIntensity > 150 && precipIntensity <= 300 ) {
+      return <Warning style={{color: "orange"}} title="Snowfall" />
+    } else if(precipIntensity > 300 && precipIntensity <= 400) {
+      return <Warning style={{color: "red"}} title="Heavy snowfall" />
+    } else if(precipIntensity > 400) {
+      return <Warning style={{color: "purple"}} title="Extreme snowfall" />
+    } else {
+      return ""
+    }
   }
 }
 
-export { WindWarning, PersistentPrecipWarning }
+const RainWarning = ({precipIntensity}) => {
+  if(precipIntensity >= 15 && precipIntensity <= 25){
+    return <Warning style={{color: "orange"}} title="Heavy rain" />
+  } else if (precipIntensity > 25 && precipIntensity <= 40){
+    return <Warning style={{color: "red"}} title="Very heavy rain" />
+  } else if (precipIntensity > 40){
+    return <Warning style={{color: "purple"}} title="Extremely heavy rain" />
+  } else {
+    return ""
+  }
+}
+
+const LowTemperatureWarning = ({temperature}) => {
+  if(temperature >= -10 && temperature < 0){
+    return <Warning style={{color: "yellow"}} title="Frost" />
+  } else if(temperature < -10){
+    return <Warning style={{color: "orange"}} title="Severe frost" />
+  } else {
+    return ""
+  }
+}
+
+const HighTemperatureWarning = ({temperature}) => {
+  if(temperature > 32 && temperature <= 38){
+    return <Warning style={{color: "yellow"}} title="Heavy thermal pollution" />
+  } else if(temperature > 38){
+    return <Warning style={{color: "orange"}} title="Extreme thermal pollution" />
+  } else {
+    return ""
+  }
+}
+
+const HotAndHumidWarning = ({temperature}) => {
+  if(temperature >= 16) {
+    return <Warning style={{color: "green"}} title="hot and humid" />
+  }
+  return ""
+}
+
+const FogWarning = ({visibility}) => {
+  if(visibility <= 0.150){
+    return <Warning style={{color: "yellow"}} title="fog" />
+  }
+  return ""
+}
+
+export { FogWarning, HotAndHumidWarning, WindWarning, PersistentPrecipWarning, RainWarning, LowTemperatureWarning, HighTemperatureWarning }

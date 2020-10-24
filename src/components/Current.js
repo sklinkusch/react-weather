@@ -4,17 +4,19 @@ import {
   getPercent,
   getTime,
   getTemperature,
-  getLength,
   getTimezone,
   getCoordinates,
 } from "./helpers"
-import { getDirection,
-  getBeaufort,
-  getVelocity} from "./wind"
 import "../styles/Current.scss"
 import CurrentImage from "./CurrentImage"
-import { WindWarning } from "./Warning"
-import { getCountry, getAdminDiv } from "../data/"
+import { HighTemperatureWarning, LowTemperatureWarning } from "./Warning"
+import UvIndex from "../reusable/uvIndex"
+import Visibility from "../reusable/Visibility"
+import DewPoint from "../reusable/DewPoint"
+import Humidity from "../reusable/Humidity"
+import WindSpeed from "../reusable/WindSpeed"
+import WindDirection from "../reusable/WindDirection"
+// import { getCountry, getAdminDiv } from "../data/"
 
 const CurrentDesktop = () => (
   <AppContext.Consumer>
@@ -43,13 +45,14 @@ const CurrentDesktop = () => (
                     <li>{context.weatherData.currently.summary}</li>
                     <li>
                       current temperature:{" "}
-                      {getTemperature(context.weatherData.currently.temperature, context.unit)}
+                      {getTemperature(context.weatherData.currently.temperature, context.unit)}{" "}
+                      <LowTemperatureWarning temperature={context.weatherData.currently.temperature} />
                     </li>
                     <li>
                       feels like:{" "}
                       {getTemperature(
                         context.weatherData.currently.apparentTemperature, context.unit
-                      )}
+                      )}{" "}<HighTemperatureWarning temperature={context.weatherData.currently.apparentTemperature} />
                     </li>
                     <li>
                       cloud cover:{" "}
@@ -65,35 +68,13 @@ const CurrentDesktop = () => (
                       air pressure: {context.weatherData.currently.pressure.toFixed(1)}{" "}
                       mbar
                     </li>
-                    <li>
-                      wind direction:{" "}
-                      {getDirection(context.weatherData.currently.windBearing)}
-                    </li>
-                    <li>
-                      wind speed:{" "}
-                      {getBeaufort(context.weatherData.currently.windSpeed)}{" "}
-                      ({getVelocity(context.weatherData.currently.windSpeed,context.unit)}){" "}
-                      <WindWarning velocity={context.weatherData.currently.windSpeed} />
-                    </li>
-                    <li>
-                      wind gusts:{" "}
-                      {getBeaufort(context.weatherData.currently.windGust)}{" "}
-                      ({getVelocity(context.weatherData.currently.windGust,context.unit)}){" "}
-                      <WindWarning velocity={context.weatherData.currently.windGust} />
-                    </li>
-                    <li>
-                      relative humidity:{" "}
-                      {getPercent(context.weatherData.currently.humidity)}
-                    </li>
-                    <li>
-                      dew point:{" "}
-                      {getTemperature(context.weatherData.currently.dewPoint, context.unit)}
-                    </li>
-                    <li>
-                      visibility:{" "}
-                      {getLength(context.weatherData.currently.visibility, context.unit)}
-                    </li>
-                    <li>UV index: {context.weatherData.currently.uvIndex}</li>
+                    <WindDirection angle={context.weatherData.currently.windBearing} />
+                    <WindSpeed term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
+                    <WindSpeed term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
+                    <Humidity humidity={context.weatherData.currently.humidity} />
+                    <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
+                    <Visibility visibility={context.weatherData.currently.visibility} unit={context.unit} />
+                    <UvIndex uvIndex={context.weatherData.currently.uvIndex} />
                   </>
                 )}
               </ul>
@@ -115,8 +96,8 @@ const CurrentMobile = () => (
               {"selectedCity" in context && context.selectedCity && (
                 <>
                   <h1 className="display-12">{context.selectedCity.name}</h1>
-                  <p className="display-12">{getAdminDiv(context.selectedCity.country, context.selectedCity.adminCode)}</p>
-                  <p className="display-12">{getCountry(context.selectedCity.country)}</p>
+                  {/* <p className="display-12">{getAdminDiv(context.selectedCity.country, context.selectedCity.adminCode)}</p>
+                  <p className="display-12">{getCountry(context.selectedCity.country)}</p> */}
                 </>
               )}
               {"currently" in context.weatherData && (
@@ -140,11 +121,12 @@ const CurrentMobile = () => (
                     <li>{context.weatherData.currently.summary}</li>
                     <li>
                       current temperature:{" "}
-                      {getTemperature(context.weatherData.currently.temperature, context.unit)}
+                      {getTemperature(context.weatherData.currently.temperature, context.unit)}{" "}
+                      <LowTemperatureWarning temperature={context.weatherData.currently.temperature} />
                     </li>
                     <li>
                       feels like:{" "}
-                      {getTemperature(context.weatherData.currently.apparentTemperature, context.unit)}
+                      {getTemperature(context.weatherData.currently.apparentTemperature, context.unit)}{" "}<HighTemperatureWarning temperature={context.weatherData.currently.apparentTemperature} />
                     </li>
                     <li>
                       cloud cover:{" "}
@@ -160,33 +142,13 @@ const CurrentMobile = () => (
                       air pressure: {context.weatherData.currently.pressure.toFixed(1)}{" "}
                       mbar
                     </li>
-                    <li>
-                      wind direction:{" "}
-                      {getDirection(context.weatherData.currently.windBearing)}
-                    </li>
-                    <li>
-                      wind speed:{" "}
-                      {getBeaufort(context.weatherData.currently.windSpeed)}{" "}
-                      ({getVelocity(context.weatherData.currently.windSpeed, context.unit)})
-                    </li>
-                    <li>
-                      wind gusts:{" "}
-                      {getBeaufort(context.weatherData.currently.windGust)}{" "}
-                      ({getVelocity(context.weatherData.currently.windGust, context.unit)})
-                    </li>
-                    <li>
-                      relative humidity:{" "}
-                      {getPercent(context.weatherData.currently.humidity)}
-                    </li>
-                    <li>
-                      dew point:{" "}
-                      {getTemperature(context.weatherData.currently.dewPoint, context.unit)}
-                    </li>
-                    <li>
-                      visibility:{" "}
-                      {getLength(context.weatherData.currently.visibility, context.unit)}
-                    </li>
-                    <li>UV index: {context.weatherData.currently.uvIndex}</li>
+                    <WindDirection angle={context.weatherData.currently.windBearing} />
+                    <WindSpeed term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
+                    <WindSpeed term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
+                    <Humidity humidity={context.weatherData.currently.humidity} />
+                    <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
+                    <Visibility visibility={context.weatherData.currently.visibility} unit={context.unit} />
+                    <UvIndex uvIndex={context.weatherData.currently.uvIndex} />
                   </>
                 )}
               </ul>
