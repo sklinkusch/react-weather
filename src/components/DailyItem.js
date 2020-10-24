@@ -12,6 +12,7 @@ import { getMoonPhase } from "./moon"
 import {getDirection,
   getBeaufort,
   getVelocity} from "./wind"
+import { PersistentPrecipWarning, WindWarning } from "./Warning"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all, unit }) {
@@ -74,7 +75,8 @@ export default function DailyItem({ data, all, unit }) {
         <li>cloud cover: {getPercent(cloudCover)}</li>
         <li>precipitation probability: {getPercent(precipProbability)}</li>
         <li>
-          daily precipitation: {getPrecip(24 * precipIntensity, unit)}
+          daily precipitation: {getPrecip(24 * precipIntensity, unit)}{" "}
+          <PersistentPrecipWarning precipType={precipType} precipIntensity={24 * precipIntensity} />
         </li>
         <li>
           maximal precipitation: {getPrecip(precipIntensityMax, unit)} at{" "}
@@ -84,10 +86,12 @@ export default function DailyItem({ data, all, unit }) {
         <li>air pressure: {pressure.toFixed(1)} mbar</li>
         <li>wind direction: {getDirection(windBearing)}</li>
         <li>
-          wind speed: {getBeaufort(windSpeed)} ({getVelocity(windSpeed, unit)})
+          wind speed: {getBeaufort(windSpeed)} ({getVelocity(windSpeed, unit)}){" "}
+          <WindWarning velocity={windSpeed} />
         </li>
         <li>
-          wind gusts: {getBeaufort(windGust)} ({getVelocity(windGust, unit)}) at {getTime(windGustTime, timezone).substr(11)}
+          wind gusts: {getBeaufort(windGust)} ({getVelocity(windGust, unit)}) at {getTime(windGustTime, timezone).substr(11)}{" "}
+          <WindWarning velocity={windGust} />
         </li>
         <li>relative humidity: {getPercent(humidity)}</li>
         <li>

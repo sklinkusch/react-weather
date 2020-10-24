@@ -13,6 +13,7 @@ import { getDirection,
   getVelocity} from "./wind"
 import "../styles/Current.scss"
 import CurrentImage from "./CurrentImage"
+import { WindWarning } from "./Warning"
 import { getCountry, getAdminDiv } from "../data/"
 
 const CurrentDesktop = () => (
@@ -71,12 +72,14 @@ const CurrentDesktop = () => (
                     <li>
                       wind speed:{" "}
                       {getBeaufort(context.weatherData.currently.windSpeed)}{" "}
-                      ({getVelocity(context.weatherData.currently.windSpeed,context.unit)})
+                      ({getVelocity(context.weatherData.currently.windSpeed,context.unit)}){" "}
+                      <WindWarning velocity={context.weatherData.currently.windSpeed} />
                     </li>
                     <li>
                       wind gusts:{" "}
                       {getBeaufort(context.weatherData.currently.windGust)}{" "}
-                      ({getVelocity(context.weatherData.currently.windGust,context.unit)})
+                      ({getVelocity(context.weatherData.currently.windGust,context.unit)}){" "}
+                      <WindWarning velocity={context.weatherData.currently.windGust} />
                     </li>
                     <li>
                       relative humidity:{" "}
