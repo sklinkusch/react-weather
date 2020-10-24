@@ -5,6 +5,12 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "cities15000-json": "^1.0.0",
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
