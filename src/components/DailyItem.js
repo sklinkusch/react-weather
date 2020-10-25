@@ -3,16 +3,22 @@ import CurrentImage from "./CurrentImage"
 import {
   getTemperature,
   getPercent,
-  getLength,
-  getPrecip,
   getDate,
   getTime,
 } from "./helpers"
-import { getMoonPhase } from "./moon"
-import {getDirection,
-  getBeaufort,
-  getVelocity} from "./wind"
-import { LowTemperatureWarning, HighTemperatureWarning, PersistentPrecipWarning, WindWarning } from "./Warning"
+import { LowTemperatureWarning, HighTemperatureWarning } from "./Warning"
+import Sun from "../reusable/Sun"
+import LunarPhase from "../reusable/LunarPhase"
+import UvIndex from "../reusable/uvIndex"
+import Visibility from "../reusable/Visibility"
+import DewPoint from "../reusable/DewPoint"
+import Humidity from "../reusable/Humidity"
+import WindSpeed from "../reusable/WindSpeed"
+import WindDirection from "../reusable/WindDirection"
+import AirPressure from "../reusable/AirPressure"
+import PrecipType from "../reusable/PrecipType"
+import Precipitation from "../reusable/Precipitation"
+import DailyPrecipitation from "../reusable/DailyPrecipitation"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all, unit }) {
@@ -76,36 +82,20 @@ export default function DailyItem({ data, all, unit }) {
         </li>
         <li>cloud cover: {getPercent(cloudCover)}</li>
         <li>precipitation probability: {getPercent(precipProbability)}</li>
-        <li>
-          daily precipitation: {getPrecip(24 * precipIntensity, unit)}{" "}
-          <PersistentPrecipWarning precipType={precipType} precipIntensity={24 * precipIntensity} />
-        </li>
-        <li>
-          maximal precipitation: {getPrecip(precipIntensityMax, unit)} at{" "}
-          {getTime(precipIntensityMaxTime, timezone).substr(11)}
-        </li>
-        {precipType !== undefined && <li>precipitation type: {precipType}</li>}
-        <li>air pressure: {pressure.toFixed(1)} mbar</li>
-        <li>wind direction: {getDirection(windBearing)}</li>
-        <li>
-          wind speed: {getBeaufort(windSpeed)} ({getVelocity(windSpeed, unit)}){" "}
-          <WindWarning velocity={windSpeed} />
-        </li>
-        <li>
-          wind gusts: {getBeaufort(windGust)} ({getVelocity(windGust, unit)}) at {getTime(windGustTime, timezone).substr(11)}{" "}
-          <WindWarning velocity={windGust} />
-        </li>
-        <li>relative humidity: {getPercent(humidity)}</li>
-        <li>
-          dew point: {getTemperature(dewPoint, unit)}
-        </li>
-        <li>
-          visibility: {getLength(visibility, unit)}
-        </li>
-        <li>UV index: {uvIndex}</li>
-        <li>sunrise at {getTime(sunriseTime, timezone).substr(11)}</li>
-        <li>sunset at {getTime(sunsetTime, timezone).substr(11)}</li>
-        <li>lunar phase: {getMoonPhase(moonPhase, latitude)}</li>
+        <DailyPrecipitation intensity={24 * precipIntensity} unit={unit} type={precipType} />
+        <Precipitation term="maximal precipitation" intensity={precipIntensityMax} unit={unit} time={precipIntensityMaxTime} zone={timezone} />
+        <PrecipType type={precipType} />
+        <AirPressure pressure={pressure} unit={unit} />
+        <WindDirection angle={windBearing} />
+        <WindSpeed term="wind speed" speed={windSpeed} unit={unit} />
+        <WindSpeed term="wind gusts" speed={windGust} unit={unit} time={windGustTime} zone={timezone} />
+        <Humidity humidity={humidity} />
+        <DewPoint dewPoint={dewPoint} unit={unit} />
+        <Visibility visibility={visibility} unit={unit} />
+        <UvIndex uvIndex={uvIndex} />
+        <Sun term="sunrise at" time={sunriseTime} zone={timezone} />
+        <Sun term="sunset at" time={sunsetTime} zone={timezone} />
+        <LunarPhase moonPhase={moonPhase} lat={latitude} />
       </ul>
     </div>
   )

@@ -3,12 +3,12 @@ import { getTime } from '../components/helpers'
 import { WindWarning } from '../components/Warning'
 import { getBeaufort, getVelocity } from '../components/wind'
 
-const WindSpeed = ({term, speed, unit, time = undefined}) => {
-  if(time){
+const WindSpeed = ({term, speed, unit, time = undefined, zone = undefined}) => {
+  if(time && zone){
     return (
       <li>
         {term}: {getBeaufort(speed)} ({getVelocity(speed, unit)}){" "}
-        at {getTime(time).substr(11)}{" "}<WindWarning velocity={speed} />
+        at {getTime(time, zone).substr(11)}{" "}<WindWarning velocity={speed} />
       </li>
     ) 
   }
