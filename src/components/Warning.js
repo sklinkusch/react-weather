@@ -79,7 +79,7 @@ const RainWarning = ({precipIntensity}) => {
 }
 
 const LowTemperatureWarning = ({temperature}) => {
-  if(temperature >= -10 && temperature < 0){
+  if(temperature >= -10 && temperature <= 0){
     return <Warning style={{color: "yellow"}} title="Frost" />
   } else if(temperature < -10){
     return <Warning style={{color: "orange"}} title="Severe frost" />
@@ -89,7 +89,7 @@ const LowTemperatureWarning = ({temperature}) => {
 }
 
 const HighTemperatureWarning = ({temperature}) => {
-  if(temperature > 32 && temperature <= 38){
+  if(temperature >= 32 && temperature <= 38){
     return <Warning style={{color: "yellow"}} title="Heavy thermal pollution" />
   } else if(temperature > 38){
     return <Warning style={{color: "orange"}} title="Extreme thermal pollution" />

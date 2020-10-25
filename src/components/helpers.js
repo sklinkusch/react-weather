@@ -131,6 +131,23 @@ const getCoordinates = (value, identifier) => {
   return string
 }
 
+const getMbar = (pressure) => {
+  return `${pressure.toFixed(1)} mbar`
+}
+
+const getInHg = (pressure) => {
+  const pressureConverted = pressure / 33.86389
+  return `${pressureConverted.toFixed(2)} inHg`
+}
+
+const getPressure = (pressure, unit) => {
+  if(unit === "celsius"){
+    return getMbar(pressure)
+  } else {
+    return getInHg(pressure)
+  }
+}
+
 export {
   getCelsius,
   getFahrenheit,
@@ -144,4 +161,5 @@ export {
   getDate,
   getTimezone,
   getCoordinates,
+  getPressure
 }
