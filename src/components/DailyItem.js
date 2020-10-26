@@ -1,12 +1,8 @@
 import React from "react"
 import CurrentImage from "./CurrentImage"
 import {
-  getTemperature,
-  getPercent,
   getDate,
-  getTime,
 } from "./helpers"
-import { LowTemperatureWarning, HighTemperatureWarning } from "./Warning"
 import Sun from "../reusable/Sun"
 import LunarPhase from "../reusable/LunarPhase"
 import UvIndex from "../reusable/uvIndex"
@@ -19,6 +15,11 @@ import AirPressure from "../reusable/AirPressure"
 import PrecipType from "../reusable/PrecipType"
 import Precipitation from "../reusable/Precipitation"
 import DailyPrecipitation from "../reusable/DailyPrecipitation"
+import PrecipProbability from "../reusable/PrecipProbability"
+import CloudCover from "../reusable/CloudCover"
+import ApparentTemperature from "../reusable/ApparentTemperature"
+import Temperature from "../reusable/Temperature"
+import Summary from "../reusable/Summary"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all, unit }) {
@@ -61,27 +62,13 @@ export default function DailyItem({ data, all, unit }) {
         <CurrentImage icon={icon} style={{ fontSize: "96px"}} />
       </div>
       <ul>
-        <li>{summary}</li>
-        <li>
-          maximum: {getTemperature(temperatureMax, unit)}{" "}
-          at {getTime(temperatureMaxTime, timezone)}{" "}
-          <LowTemperatureWarning temperature={temperatureMax} />
-        </li>
-        <li>
-          minimum: {getTemperature(temperatureMin, unit)}{" "}
-          at {getTime(temperatureMinTime, timezone)}
-        </li>
-        <li>
-          apparent maximum: {getTemperature(apparentTemperatureMax, unit)} at{" "}
-          {getTime(apparentTemperatureMaxTime, timezone)}{" "}
-          <HighTemperatureWarning temperature={apparentTemperatureMax} />
-        </li>
-        <li>
-          apparent minimum: {getTemperature(apparentTemperatureMin, unit)} at{" "}
-          {getTime(apparentTemperatureMinTime, timezone)}
-        </li>
-        <li>cloud cover: {getPercent(cloudCover)}</li>
-        <li>precipitation probability: {getPercent(precipProbability)}</li>
+        <Summary summary={summary} />
+        <Temperature term="maximum" temperature={temperatureMax} unit={unit} time={temperatureMaxTime} zone={timezone} />
+        <Temperature term="minimum" temperature={temperatureMin} unit={unit} time={temperatureMinTime} zone={timezone} />
+        <ApparentTemperature term="apparent maximum" temperature={apparentTemperatureMax} unit={unit} time={apparentTemperatureMaxTime} zone={timezone} />
+        <ApparentTemperature term="apparent minimum" temperature={apparentTemperatureMin} unit={unit} time={apparentTemperatureMinTime} zone={timezone} />
+        <CloudCover value={cloudCover} />
+        <PrecipProbability value={precipProbability} />
         <DailyPrecipitation intensity={24 * precipIntensity} unit={unit} type={precipType} />
         <Precipitation term="maximal precipitation" intensity={precipIntensityMax} unit={unit} time={precipIntensityMaxTime} zone={timezone} />
         <PrecipType type={precipType} />
