@@ -69,7 +69,7 @@ export default function DailyItem({ data, all, unit }) {
         <ApparentTemperature term="apparent minimum" temperature={apparentTemperatureMin} unit={unit} time={apparentTemperatureMinTime} zone={timezone} />
         <CloudCover value={cloudCover} />
         <PrecipProbability value={precipProbability} />
-        <DailyPrecipitation intensity={24 * precipIntensity} unit={unit} type={precipType} />
+        <DailyPrecipitation intensity={precipIntensity} unit={unit} type={precipType} />
         <Precipitation term="maximal precipitation" intensity={precipIntensityMax} unit={unit} time={precipIntensityMaxTime} zone={timezone} />
         <PrecipType type={precipType} />
         <AirPressure pressure={pressure} unit={unit} />
