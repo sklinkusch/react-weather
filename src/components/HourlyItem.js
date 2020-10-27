@@ -1,17 +1,23 @@
 import React from "react"
 import CurrentImage from "./CurrentImage"
 import {
-  getTemperature,
-  getPercent,
-  getLength,
-  getPrecip,
   getTime,
 } from "./helpers"
-import {getDirection,
-  getBeaufort,
-  getVelocity} from "./wind"
 import "../styles/HourlyItem.scss"
-import { LowTemperatureWarning, HighTemperatureWarning, RainWarning, WindWarning } from "./Warning"
+import Summary from "../reusable/Summary"
+import Temperature from "../reusable/Temperature"
+import ApparentTemperature from "../reusable/ApparentTemperature"
+import CloudCover from "../reusable/CloudCover"
+import PrecipProbability from "../reusable/PrecipProbability"
+import Precipitation from "../reusable/Precipitation"
+import PrecipType from "../reusable/PrecipType"
+import AirPressure from "../reusable/AirPressure"
+import WindDirection from "../reusable/WindDirection"
+import WindSpeed from "../reusable/WindSpeed"
+import Humidity from "../reusable/Humidity"
+import DewPoint from "../reusable/DewPoint"
+import Visibility from "../reusable/Visibility"
+import UvIndex from "../reusable/uvIndex"
 
 export default function HourlyItem({data, all, unit}) {
   const { time, icon, summary, temperature, apparentTemperature, cloudCover, precipProbability, precipIntensity, precipType, pressure, windBearing, windSpeed, windGust, humidity, dewPoint, visibility, uvIndex } = data
@@ -23,44 +29,21 @@ export default function HourlyItem({data, all, unit}) {
         <CurrentImage icon={icon}  style={{ fontSize: "96px" }} />
       </div>
       <ul>
-        <li>{summary}</li>
-        <li>
-          temperature: {getTemperature(temperature, unit)}{" "}
-          <LowTemperatureWarning temperature={temperature} />
-        </li>
-        <li>
-          feels like: {getTemperature(apparentTemperature, unit)}{" "}
-          <HighTemperatureWarning temperature={apparentTemperature} />
-        </li>
-        <li>cloud cover: {getPercent(cloudCover)}</li>
-        <li>
-          precipitation probability: {getPercent(precipProbability)}
-        </li>
-        {precipIntensity > 0 && (<li>
-          hourly precipitation: {getPrecip(precipIntensity, unit)}{" "}
-          <RainWarning precipIntensity={precipIntensity} />
-        </li>)}
-        {precipType !== undefined && (
-          <li>precipitation type: {precipType}</li>
-        )}
-        <li>air pressure: {pressure.toFixed(1)} mbar</li>
-        <li>wind direction: {getDirection(windBearing)}</li>
-        <li>
-          wind speed: {getBeaufort(windSpeed)} ({getVelocity(windSpeed, unit)})}{" "}
-          <WindWarning velocity={windSpeed} />
-        </li>
-        <li>
-          wind gusts: {getBeaufort(windGust)} ({getVelocity(windGust, unit)}){" "}
-          <WindWarning velocity={windSpeed} />
-        </li>
-        <li>relative humidity: {getPercent(humidity)}</li>
-        <li>
-          dew point: {getTemperature(dewPoint, unit)}
-        </li>
-        <li>
-          visibility: {getLength(visibility, unit)}
-        </li>
-        <li>UV index: {uvIndex}</li>
+        <Summary summary={summary} />
+        <Temperature term="temperature" temperature={temperature} unit={unit} />
+        <ApparentTemperature term="feels like" temperature={apparentTemperature} unit={unit} />
+        <CloudCover value={cloudCover} />
+        <PrecipProbability value={precipProbability} />
+        <Precipitation term="hourly precipitation" intensity={precipIntensity} unit={unit} />
+        <PrecipType type={precipType} />
+        <AirPressure pressure={pressure} unit={unit} />
+        <WindDirection angle={windBearing} />
+        <WindSpeed term="wind speed" speed={windSpeed} unit={unit} />
+        <WindSpeed term="wind gusts" speed={windGust} unit={unit} />
+        <Humidity humidity={humidity} />
+        <DewPoint dewPoint={dewPoint} unit={unit} />
+        <Visibility visibility={visibility} unit={unit} />
+        <UvIndex uvIndex={uvIndex} />
       </ul>
     </div>
   )
