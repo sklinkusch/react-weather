@@ -13,6 +13,7 @@ import Dominica from "./Dominica"
 import DominicanRepublic from "./DominicanRepublic"
 import ElSalvador from "./ElSalvador"
 import Ethiopia from "./Ethiopia"
+import France, { FrenchGuiana, Guadeloupe, Martinique, Mayotte, Reunion } from "./France"
 import Germany from "./Germany"
 import Grenada from "./Grenada"
 import Guatemala from "./Guatemala"
@@ -48,10 +49,13 @@ const countryObject = {
   DM: Dominica,
   DO: DominicanRepublic,
   ET: Ethiopia,
+  FR: France,
   GB: UnitedKingdom,
   GD: Grenada,
+  GF: FrenchGuiana,
   GG: Guernsey,
   GI: Gibraltar,
+  GP: Guadeloupe,
   GT: Guatemala,
   HK: HongKong,
   HN: Honduras,
@@ -64,15 +68,18 @@ const countryObject = {
   JP: Japan,
   KY: CaymanIslands,
   MO: Macau,
+  MQ: Martinique,
   MX: Mexico,
   NG: Nigeria,
   PH: Philippines,
   PK: Pakistan,
   PR: PuertoRico,
+  RE: Reunion,
   RU: Russia,
   SV: ElSalvador,
   US: UnitedStates,
   VI: AmericanVirginIslands,
+  YT: Mayotte,
 }
 
 export const getCountry = countryCode => {
