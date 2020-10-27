@@ -27,6 +27,7 @@ import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
 import Philippines from "./Philippines"
 import Russia from "./Russia"
+import Switzerland from "./Switzerland"
 import UnitedKingdom, {IsleOfMan, Guernsey, Jersey, CaymanIslands, Gibraltar} from "./UnitedKingdom"
 import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 
@@ -39,6 +40,7 @@ const countryObject = {
   BS: Bahamas,
   BZ: Belize,
   CA: Canada,
+  CH: Switzerland,
   CN: ChinaPR,
   CR: CostaRica,
   CU: Cuba,
