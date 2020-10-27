@@ -62,7 +62,7 @@ export default function DailyItem({ data, all, unit }) {
         <CurrentImage icon={icon} style={{ fontSize: "96px"}} />
       </div>
       <ul>
-        <Summary summary={summary} />
+        <Summary summary={summary} icon={icon} temperature={temperatureMin} precipIntensity={precipIntensity} />
         <Temperature term="maximum" temperature={temperatureMax} unit={unit} time={temperatureMaxTime} zone={timezone} />
         <Temperature term="minimum" temperature={temperatureMin} unit={unit} time={temperatureMinTime} zone={timezone} />
         <ApparentTemperature term="apparent maximum" temperature={apparentTemperatureMax} unit={unit} time={apparentTemperatureMaxTime} zone={timezone} />

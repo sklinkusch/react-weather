@@ -112,4 +112,36 @@ const FogWarning = ({visibility}) => {
   return ""
 }
 
-export { FogWarning, HotAndHumidWarning, WindWarning, PersistentPrecipWarning, RainWarning, LowTemperatureWarning, HighTemperatureWarning }
+const UvWarning = ({uvIndex}) => {
+  if(uvIndex >= 3 && uvIndex <= 5){
+    return <Warning style={{color: "yellow"}} title="moderate risk of harm from sun exposure" />
+  }
+  if(uvIndex === 6 || uvIndex === 7){
+    return <Warning style={{color: "orange"}} title="high risk of harm from sun exposure" />
+  }
+  if(uvIndex >= 8 && uvIndex <= 10){
+    return <Warning style={{color: "red"}} title="very high risk of harm from sun exposure" />
+  }
+  if(uvIndex >= 11){
+    return <Warning style={{color: "purple"}} title="extreme risk of harm from sun exposure" />
+  }
+  return ""
+}
+
+const OtherWarning = ({icon = "", summary = "", temperature = 10, precipIntensity = 0}) => {
+  if(icon.includes("tornado") || summary.includes("tornado")) {
+    return <Warning style={{ color: "red" }} title="tornado" />
+  }
+  if(icon.includes("hail") || summary.includes("hail")) {
+    return <Warning style={{ color: "orange" }} title="hail" />
+  }
+  if(icon.includes("thunderstorm") || summary.includes("thunderstorm")) {
+    return <Warning style={{ color: "yellow"}} title="thunderstorm" />
+  }
+  if(temperature <= 0 && precipIntensity > 0){
+    return <Warning style={{ color: "orange" }} title="black ice" />
+  }
+  return ""
+}
+
+export { FogWarning, HotAndHumidWarning, WindWarning, PersistentPrecipWarning, RainWarning, LowTemperatureWarning, HighTemperatureWarning, UvWarning, OtherWarning }

@@ -29,7 +29,7 @@ export default function HourlyItem({data, all, unit}) {
         <CurrentImage icon={icon}  style={{ fontSize: "96px" }} />
       </div>
       <ul>
-        <Summary summary={summary} />
+        <Summary summary={summary} icon={icon} temperature={temperature} precipIntensity={precipIntensity} />
         <Temperature term="temperature" temperature={temperature} unit={unit} />
         <ApparentTemperature term="feels like" temperature={apparentTemperature} unit={unit} />
         <CloudCover value={cloudCover} />

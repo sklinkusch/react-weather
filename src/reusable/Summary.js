@@ -1,9 +1,12 @@
 import React from 'react'
+import { OtherWarning } from '../components/Warning'
 
-const Summary = ({summary}) => (
+const Summary = ({summary, icon, temperature, precipIntensity}) => {
+  console.log(icon)
+  return (
   <li>
-    {summary}
+    {summary} <OtherWarning icon={icon} summary={summary} temperature={temperature} precipIntensity={precipIntensity} />
   </li>
-)
+)}
 
 export default Summary
