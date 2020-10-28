@@ -23,6 +23,7 @@ import India from "./India"
 import Indonesia from "./Indonesia"
 import Jamaica from "./Jamaica"
 import Japan from "./Japan"
+import Luxembourg from "./Luxembourg"
 import Mexico from "./Mexico"
 import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
@@ -67,6 +68,7 @@ const countryObject = {
   JM: Jamaica,
   JP: Japan,
   KY: CaymanIslands,
+  LU: Luxembourg,
   MO: Macau,
   MQ: Martinique,
   MX: Mexico,
