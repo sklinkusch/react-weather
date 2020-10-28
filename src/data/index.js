@@ -3,6 +3,7 @@ import Austria from "./Austria"
 import Bahamas from "./Bahamas"
 import Bangladesh from "./Bangladesh"
 import Barbados from "./Barbados"
+import Belgium from "./Belgium"
 import Belize from "./Belize"
 import Brazil from "./Brazil"
 import Canada from "./Canada"
@@ -38,6 +39,7 @@ const countryObject = {
   AT: Austria,
   BB: Barbados,
   BD: Bangladesh,
+  BE: Belgium,
   BR: Brazil,
   BS: Bahamas,
   BZ: Belize,
