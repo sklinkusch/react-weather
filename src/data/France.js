@@ -37,6 +37,11 @@ export const Mayotte = {
   adminCodes: "Mayotte",
 }
 
+export const SaintMartin = {
+  countryName: "French Republic",
+  adminCodes: "St. Martin",
+}
+
 export const Reunion = {
   countryName: "French Republic",
   adminCodes: "Réunion",

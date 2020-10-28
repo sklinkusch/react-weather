@@ -14,7 +14,7 @@ import Dominica from "./Dominica"
 import DominicanRepublic from "./DominicanRepublic"
 import ElSalvador from "./ElSalvador"
 import Ethiopia from "./Ethiopia"
-import France, { FrenchGuiana, Guadeloupe, Martinique, Mayotte, Reunion } from "./France"
+import France, { FrenchGuiana, Guadeloupe, Martinique, Mayotte, Reunion, SaintMartin } from "./France"
 import Germany from "./Germany"
 import Grenada from "./Grenada"
 import Guatemala from "./Guatemala"
@@ -26,6 +26,7 @@ import Jamaica from "./Jamaica"
 import Japan from "./Japan"
 import Luxembourg from "./Luxembourg"
 import Mexico from "./Mexico"
+import Netherlands, { Aruba, Curacao, DutchWestIndies, SintMaarten } from "./Netherlands"
 import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
 import Philippines from "./Philippines"
@@ -37,9 +38,11 @@ import UnitedStates, { PuertoRico, AmericanVirginIslands } from "./UnitedStates"
 const countryObject = {
   AG: AntiguaAndBarbuda,
   AT: Austria,
+  AW: Aruba,
   BB: Barbados,
   BD: Bangladesh,
   BE: Belgium,
+  BQ: DutchWestIndies,
   BR: Brazil,
   BS: Bahamas,
   BZ: Belize,
@@ -48,6 +51,7 @@ const countryObject = {
   CN: ChinaPR,
   CR: CostaRica,
   CU: Cuba,
+  CW: Curacao,
   DE: Germany,
   DM: Dominica,
   DO: DominicanRepublic,
@@ -71,16 +75,19 @@ const countryObject = {
   JP: Japan,
   KY: CaymanIslands,
   LU: Luxembourg,
+  MF: SaintMartin,
   MO: Macau,
   MQ: Martinique,
   MX: Mexico,
   NG: Nigeria,
+  NL: Netherlands,
   PH: Philippines,
   PK: Pakistan,
   PR: PuertoRico,
   RE: Reunion,
   RU: Russia,
   SV: ElSalvador,
+  SX: SintMaarten,
   US: UnitedStates,
   VI: AmericanVirginIslands,
   YT: Mayotte,
