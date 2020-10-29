@@ -63,6 +63,8 @@ const PersistentPrecipWarning = ({precipType, precipIntensity}) => {
     } else {
       return ""
     }
+  } else {
+    return ""
   }
 }
 
