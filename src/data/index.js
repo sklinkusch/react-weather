@@ -31,6 +31,7 @@ import Netherlands, { Aruba, Curacao, DutchWestIndies, SintMaarten } from "./Net
 import Nigeria from "./Nigeria"
 import Pakistan from "./Pakistan"
 import Philippines from "./Philippines"
+import Poland from "./Poland"
 import Russia from "./Russia"
 import Switzerland from "./Switzerland"
 import UnitedKingdom, {IsleOfMan, Guernsey, Jersey, CaymanIslands, Gibraltar} from "./UnitedKingdom"
@@ -87,6 +88,7 @@ const countryObject = {
   NL: Netherlands,
   PH: Philippines,
   PK: Pakistan,
+  PL: Poland,
   PR: PuertoRico,
   RE: Reunion,
   RU: Russia,
