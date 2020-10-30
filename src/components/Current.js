@@ -65,7 +65,7 @@ const CurrentMobile = () => (
             <div className="text-container">
               {"selectedCity" in context && context.selectedCity && (
                 <>
-                  <h1 className="display-12">{context.selectedCity.name}</h1>
+                  <h1 className="display-12">{context.selectedCity.dropname}</h1>
                   {/* <p className="display-12">{getAdminDiv(context.selectedCity.country, context.selectedCity.adminCode)}</p>
                   <p className="display-12">{getCountry(context.selectedCity.country)}</p> */}
                 </>
