@@ -1,5 +1,6 @@
 import React, { useRef, useContext, useState } from "react"
 import AppContext from "../context/AppContext"
+import {Collapse, Navbar, NavbarToggler, NavbarBrand} from "reactstrap"
 
 export default function Header() {
   const inputRef = useRef(null)
@@ -11,6 +12,8 @@ export default function Header() {
     weatherContext.selectedCity,
     ...remainingCities,
   ])
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleOpen = () => {setIsOpen(!isOpen)}
   const selectCity = (e) => {
     const key = e.target.value
     const currentCity = weatherContext.cities.filter(
@@ -21,6 +24,10 @@ export default function Header() {
     const newViewCities = [currentCity, ...remaining]
     inputRef.current.value = ""
     setViewData(newViewCities)
+  }
+  const selectUnit = (e) => {
+    const unit = e.target.value
+    weatherContext.setUnit(unit)
   }
   const filterData = (e) => {
     const filterValue = e.target.value
@@ -38,10 +45,12 @@ export default function Header() {
   return (
     <AppContext.Consumer>
       {(context) => (
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <a href="./index.html" className="navbar-brand">
+        <Navbar color="dark" dark expand="lg">
+          <NavbarBrand href="/">
             Weather online
-          </a>
+          </NavbarBrand>
+          <NavbarToggler onClick={toggleOpen} />
+          <Collapse isOpen={isOpen} navbar>
           <input
             type="text"
             name="placefilter"
@@ -66,7 +75,12 @@ export default function Header() {
           </select>
           &nbsp;
           <button onClick={context.handleClick}>Refresh</button>
-        </nav>
+          <select value={context.unit} onChange={selectUnit}>
+            <option value="celsius">°C</option>
+            <option value="fahrenheit">°F</option>
+          </select>
+          </Collapse>
+        </Navbar>
       )}
     </AppContext.Consumer>
   )

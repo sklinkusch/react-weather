@@ -1,22 +1,28 @@
 import React from "react"
 import CurrentImage from "./CurrentImage"
 import {
-  getCelsius,
-  getFahrenheit,
-  getPercent,
-  getMiles,
-  getInch,
   getDate,
-  getTime,
 } from "./helpers"
-import { getMoonPhase } from "./moon"
-import {getDirection,
-  getBeaufort,
-  getKph,
-  getMph,} from "./wind"
+import Sun from "../reusable/Sun"
+import LunarPhase from "../reusable/LunarPhase"
+import UvIndex from "../reusable/uvIndex"
+import Visibility from "../reusable/Visibility"
+import DewPoint from "../reusable/DewPoint"
+import Humidity from "../reusable/Humidity"
+import WindSpeed from "../reusable/WindSpeed"
+import WindDirection from "../reusable/WindDirection"
+import AirPressure from "../reusable/AirPressure"
+import PrecipType from "../reusable/PrecipType"
+import Precipitation from "../reusable/Precipitation"
+import DailyPrecipitation from "../reusable/DailyPrecipitation"
+import PrecipProbability from "../reusable/PrecipProbability"
+import CloudCover from "../reusable/CloudCover"
+import ApparentTemperature from "../reusable/ApparentTemperature"
+import Temperature from "../reusable/Temperature"
+import Summary from "../reusable/Summary"
 // import "../styles/DailyItem.scss";
 
-export default function DailyItem({ data, all }) {
+export default function DailyItem({ data, all, unit }) {
   const {
     time,
     icon,
@@ -50,65 +56,33 @@ export default function DailyItem({ data, all }) {
   } = data
   const { timezone, latitude } = all
   return (
-    <div className="col-md-4">
+    <div className="col-lg-4 col-md-6 col-sm-12">
       <h2>{getDate(time, timezone)}</h2>
       <div className="imag">
         <CurrentImage icon={icon} style={{ fontSize: "96px"}} />
       </div>
       <ul>
-        <li>{summary}</li>
-        <li>
-          maximum: {getCelsius(temperatureMax)}/{getFahrenheit(temperatureMax)}{" "}
-          at {getTime(temperatureMaxTime, timezone)}
-        </li>
-        <li>
-          minimum: {getCelsius(temperatureMin)}/{getFahrenheit(temperatureMin)}{" "}
-          at {getTime(temperatureMinTime, timezone)}
-        </li>
-        <li>
-          apparent maximum: {getCelsius(apparentTemperatureMax)}/
-          {getFahrenheit(apparentTemperatureMax)} at{" "}
-          {getTime(apparentTemperatureMaxTime, timezone)}
-        </li>
-        <li>
-          apparent minimum: {getCelsius(apparentTemperatureMin)}/
-          {getFahrenheit(apparentTemperatureMin)} at{" "}
-          {getTime(apparentTemperatureMinTime, timezone)}
-        </li>
-        <li>cloud cover: {getPercent(cloudCover)}</li>
-        <li>precipitation probability: {getPercent(precipProbability)}</li>
-        <li>
-          daily precipitation: {(24 * precipIntensity).toFixed(2)} mm/
-          {getInch(24 * precipIntensity)}
-        </li>
-        <li>
-          maximal precipitation: {precipIntensityMax.toFixed(2)} mm/
-          {getInch(precipIntensityMax)} at{" "}
-          {getTime(precipIntensityMaxTime, timezone).substr(11)}
-        </li>
-        {precipType !== undefined && <li>precipitation type: {precipType}</li>}
-        <li>air pressure: {pressure.toFixed(1)} mbar</li>
-        <li>wind direction: {getDirection(windBearing)}</li>
-        <li>
-          wind speed: {getBeaufort(windSpeed)}/{getKph(windSpeed)}/
-          {getMph(windSpeed)}
-        </li>
-        <li>
-          wind gusts: {getBeaufort(windGust)}/{getKph(windGust)}/
-          {getMph(windGust)} at {getTime(windGustTime, timezone).substr(11)}
-        </li>
-        <li>relative humidity: {getPercent(humidity)}</li>
-        <li>
-          dew point: {getCelsius(dewPoint)}/{getFahrenheit(dewPoint)}
-        </li>
-        <li>
-          visibility: {visibility.toFixed(1)} km/
-          {getMiles(visibility)}
-        </li>
-        <li>UV index: {uvIndex}</li>
-        <li>sunrise at {getTime(sunriseTime, timezone).substr(11)}</li>
-        <li>sunset at {getTime(sunsetTime, timezone).substr(11)}</li>
-        <li>lunar phase: {getMoonPhase(moonPhase, latitude)}</li>
+        <Summary summary={summary} icon={icon} temperature={temperatureMin} precipIntensity={precipIntensity} />
+        <Temperature term="maximum" temperature={temperatureMax} unit={unit} time={temperatureMaxTime} zone={timezone} />
+        <Temperature term="minimum" temperature={temperatureMin} unit={unit} time={temperatureMinTime} zone={timezone} />
+        <ApparentTemperature term="apparent maximum" temperature={apparentTemperatureMax} unit={unit} time={apparentTemperatureMaxTime} zone={timezone} />
+        <ApparentTemperature term="apparent minimum" temperature={apparentTemperatureMin} unit={unit} time={apparentTemperatureMinTime} zone={timezone} />
+        <CloudCover value={cloudCover} />
+        <PrecipProbability value={precipProbability} />
+        <DailyPrecipitation intensity={precipIntensity} unit={unit} type={precipType} />
+        <Precipitation term="maximal precipitation" intensity={precipIntensityMax} unit={unit} time={precipIntensityMaxTime} zone={timezone} />
+        <PrecipType type={precipType} />
+        <AirPressure pressure={pressure} unit={unit} />
+        <WindDirection angle={windBearing} />
+        <WindSpeed term="wind speed" speed={windSpeed} unit={unit} />
+        <WindSpeed term="wind gusts" speed={windGust} unit={unit} time={windGustTime} zone={timezone} />
+        <Humidity humidity={humidity} />
+        <DewPoint dewPoint={dewPoint} unit={unit} />
+        <Visibility visibility={visibility} unit={unit} />
+        <UvIndex uvIndex={uvIndex} />
+        <Sun term="sunrise at" time={sunriseTime} zone={timezone} />
+        <Sun term="sunset at" time={sunsetTime} zone={timezone} />
+        <LunarPhase moonPhase={moonPhase} lat={latitude} />
       </ul>
     </div>
   )

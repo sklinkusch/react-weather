@@ -16,17 +16,52 @@ const getFahrenheit = (celsius) => {
     return `${fahrenheit.toFixed(1)}°F`
   }
 }
+
+const getTemperature = (temperature, unit) => {
+  if (unit === "celsius"){
+    return getCelsius(temperature)
+  } else {
+    return getFahrenheit(temperature)
+  }
+}
+
 const getPercent = (decimal) => {
   return `${(100 * decimal).toFixed(0)}%`
 }
+
+const getKilometers = (length) => {
+  return `${length.toFixed(1)} km`
+}
+
 const getMiles = (length) => {
   const miles = length / 1.609344
   return `${miles.toFixed(1)} mi`
 }
+
+const getLength = (length, unit) => {
+  if(unit === "celsius"){
+    return getKilometers(length)
+  } else {
+    return getMiles(length)
+  }
+}
+const getMm = (length) => {
+  return `${length.toFixed(2)} mm`
+}
+
 const getInch = (length) => {
   const inch = length / 25.4
   return `${inch.toFixed(4)}"`
 }
+
+const getPrecip = (length, unit) => {
+  if(unit === "celsius"){
+    return getMm(length)
+  } else {
+    return getInch(length)
+  }
+}
+
 const getTime = (timestamp, timezone) => {
   const date = new Date(timestamp * 1000)
   const isoString = date.toLocaleString("en-GB", { timeZone: timezone })
@@ -96,14 +131,35 @@ const getCoordinates = (value, identifier) => {
   return string
 }
 
+const getMbar = (pressure) => {
+  return `${pressure.toFixed(1)} mbar`
+}
+
+const getInHg = (pressure) => {
+  const pressureConverted = pressure / 33.86389
+  return `${pressureConverted.toFixed(2)} inHg`
+}
+
+const getPressure = (pressure, unit) => {
+  if(unit === "celsius"){
+    return getMbar(pressure)
+  } else {
+    return getInHg(pressure)
+  }
+}
+
 export {
   getCelsius,
   getFahrenheit,
+  getTemperature,
   getPercent,
   getMiles,
+  getLength,
   getInch,
+  getPrecip,
   getTime,
   getDate,
   getTimezone,
   getCoordinates,
+  getPressure
 }

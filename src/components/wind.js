@@ -44,7 +44,7 @@ const getBeaufort = (speed) => {
 }
 const getKph = (speed) => {
   if (speed) {
-    return `${speed.toFixed(1)} kph`
+    return `${speed.toFixed(1)} km/h`
   }
   return ""
 }
@@ -55,5 +55,12 @@ const getMph = (speed) => {
   }
   return ""
 }
+const getVelocity = (speed, unit) => {
+  if (unit === "celsius"){
+    return getKph(speed)
+  } else {
+    return getMph(speed)
+  }
+}
 
-export { getDirection, getBeaufort, getKph, getMph }
+export { getDirection, getBeaufort, getKph, getMph, getVelocity }

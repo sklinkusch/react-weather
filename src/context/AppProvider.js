@@ -9,6 +9,8 @@ export default class AppProvider extends Component {
       cities: this.getCities(cities),
       selectedCity: {
         name: "Berlin",
+        adminCode: 16,
+        country: "DE",
         dropname: "Berlin (DE)",
         key: "2950159",
         lat: "52.52437",
@@ -24,6 +26,20 @@ export default class AppProvider extends Component {
       handleClick: () => {
         this.fetchData(this.state.selectedCity)
       },
+      unit: "",
+      setUnit: myUnit => {
+        localStorage.setItem('unit', myUnit)
+        this.setState({unit: myUnit})
+      }
+    }
+  }
+  setInitialUnit = () => {
+    const initialUnit = localStorage.getItem('unit')
+    if(initialUnit){
+      this.setState({unit: initialUnit})
+    } else {
+      localStorage.setItem('unit', 'celsius')
+      this.setState({unit: "celsius"})
     }
   }
   getCities = fullList => {
@@ -64,6 +80,7 @@ export default class AppProvider extends Component {
     }
   }
   componentDidMount() {
+    this.setInitialUnit()
     this.fetchData(this.state.selectedCity)
   }
   render() {
