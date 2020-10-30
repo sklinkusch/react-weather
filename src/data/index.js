@@ -10,6 +10,7 @@ import Canada from "./Canada"
 import ChinaPR, { HongKong, Macau } from "./ChinaPR"
 import CostaRica from "./CostaRica"
 import Cuba from "./Cuba"
+import Czechia from "./Czechia"
 import Denmark, { Greenland, FaroeIslands } from "./Denmark"
 import Dominica from "./Dominica"
 import DominicanRepublic from "./DominicanRepublic"
@@ -54,6 +55,7 @@ const countryObject = {
   CR: CostaRica,
   CU: Cuba,
   CW: Curacao,
+  CZ: Czechia,
   DE: Germany,
   DK: Denmark,
   DM: Dominica,
