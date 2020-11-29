@@ -63,7 +63,8 @@ export default class AppProvider extends Component {
   fetchData = (selectedCity) => {
     if (selectedCity) {
       const { lat, lng } = selectedCity
-      const url = `https://darksky.sklinkusch.now.sh/?${lat},${lng}`
+      // const url = `https://darksky.sklinkusch.now.sh/?${lat},${lng}`
+      const url = `https://owm-proxy.vercel.app/?lat=${lat}&lon=${lng}`
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
