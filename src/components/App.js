@@ -12,8 +12,8 @@ function App() {
       <Header />
       <TitleImage />
       <Current />
-      <Daily />
-      <Hourly />
+      {/* <Daily /> */}
+      {/* <Hourly /> */}
     </div>
   );
 }

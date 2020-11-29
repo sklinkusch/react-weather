@@ -26,7 +26,7 @@ const getTemperature = (temperature, unit) => {
 }
 
 const getPercent = (decimal) => {
-  return `${(100 * decimal).toFixed(0)}%`
+  return `${(decimal).toFixed(0)}%`
 }
 
 const getKilometers = (length) => {
@@ -39,10 +39,11 @@ const getMiles = (length) => {
 }
 
 const getLength = (length, unit) => {
+  const modLength = length / 1000
   if(unit === "celsius"){
-    return getKilometers(length)
+    return getKilometers(modLength)
   } else {
-    return getMiles(length)
+    return getMiles(modLength)
   }
 }
 const getMm = (length) => {
@@ -102,9 +103,10 @@ const dayNumberToString = (number) => {
 const getTimezone = (offset) => {
   const sign = offset >= 0 ? "+" : "-"
   const absolute = Math.abs(offset)
-  let hours = Math.floor(absolute)
+  const hoursRaw = absolute/3600
+  let hours = Math.floor(hoursRaw)
+  const remainder = hoursRaw - hours
   hours = hours < 10 ? `0${hours}` : `${hours}`
-  const remainder = absolute - hours
   let minutes = 60 * remainder
   minutes = minutes < 10 ? `0${minutes}` : `${minutes}`
   const string = `UTC${sign}${hours}:${minutes}`

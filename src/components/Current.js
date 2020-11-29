@@ -28,23 +28,23 @@ const CurrentDesktop = () => (
                 <h1 className="display-3">{context.selectedCity.dropname}</h1>
               )}
               <ul>
-                {"currently" in context.weatherData && (
+                {"current" in context.weatherData && (
                   <>
-                    <Coordinates lat={context.weatherData.latitude} lng={context.weatherData.longitude} />
-                    <Summary summary={context.weatherData.currently.summary} icon={context.weatherData.currently.icon} temperature={context.weatherData.currently.temperature} precipIntensity={0} />
-                    <CurrentTime time={context.weatherData.currently.time} zone={context.weatherData.timezone} offset={context.weatherData.offset} />
-                    <Temperature term="current temperature" temperature={context.weatherData.currently.temperature} unit={context.unit} />
-                    <ApparentTemperature term="feels like" temperature={context.weatherData.currently.apparentTemperature} unit={context.unit} />
-                    <CloudCover value={context.weatherData.currently.cloudCover} />
-                    <PrecipProbability value={context.weatherData.currently.precipProbability} />
-                    <AirPressure pressure={context.weatherData.currently.pressure} unit={context.unit} />
-                    <WindDirection angle={context.weatherData.currently.windBearing} />
-                    <WindSpeed term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
-                    <WindSpeed term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
-                    <Humidity humidity={context.weatherData.currently.humidity} />
-                    <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
-                    <Visibility visibility={context.weatherData.currently.visibility} unit={context.unit} />
-                    <UvIndex uvIndex={context.weatherData.currently.uvIndex} />
+                    <Coordinates lat={context.weatherData.lat} lng={context.weatherData.lon} />
+                    <Summary summary={context.weatherData.current.weather[0].description} icon={context.weatherData.current.weather[0].id} temperature={context.weatherData.current.temp} precipIntensity={0} />
+                    <CurrentTime time={context.weatherData.current.dt} zone={context.weatherData.timezone} offset={context.weatherData.timezone_offset} />
+                    <Temperature term="current temperature" temperature={context.weatherData.current.temp} unit={context.unit} />
+                    <ApparentTemperature term="feels like" temperature={context.weatherData.current.feels_like} unit={context.unit} />
+                    <CloudCover value={context.weatherData.current.clouds} />
+                    {/* <PrecipProbability value={context.weatherData.currently.precipProbability} /> */}
+                    <AirPressure pressure={context.weatherData.current.pressure} unit={context.unit} />
+                    <WindDirection angle={context.weatherData.current.wind_deg} />
+                    <WindSpeed term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
+                    {context.weatherData.current.wind_gust && <WindSpeed term="wind gusts" speed={context.weatherData.current.wind_gust} unit={context.unit} />}
+                    <Humidity humidity={context.weatherData.current.humidity} />
+                    <DewPoint dewPoint={context.weatherData.current.dew_point} unit={context.unit} />
+                    <Visibility visibility={context.weatherData.current.visibility} unit={context.unit} />
+                    <UvIndex uvIndex={context.weatherData.current.uvi} />
                   </>
                 )}
               </ul>
@@ -70,27 +70,27 @@ const CurrentMobile = () => (
                   <p className="display-12">{getCountry(context.selectedCity.country)}</p> */}
                 </>
               )}
-              {"currently" in context.weatherData && (
-              <CurrentImage icon={context.weatherData.currently.icon} style={{ fontSize: "152px"}} />
+              {"current" in context.weatherData && (
+              <CurrentImage icon={context.weatherData.current.weather[0].id} style={{ fontSize: "152px"}} />
             )}
               <ul>
-                {"currently" in context.weatherData && (
+                {"current" in context.weatherData && (
                   <>
-                    <Coordinates lat={context.weatherData.latitude} lng={context.weatherData.longitude} />
-                    <CurrentTime time={context.weatherData.currently.time} zone={context.weatherData.timezone} offset={context.weatherData.offset} />
-                    <Summary summary={context.weatherData.currently.summary} />
-                    <Temperature term="current temperature" temperature={context.weatherData.currently.temperature} unit={context.unit} />
-                    <ApparentTemperature term="feels like" temperature={context.weatherData.currently.apparentTemperature} unit={context.unit} />
-                    <CloudCover value={context.weatherData.currently.cloudCover} />
-                    <PrecipProbability value={context.weatherData.currently.precipProbability} />
-                    <AirPressure pressure={context.weatherData.currently.pressure} unit={context.unit} />
-                    <WindDirection angle={context.weatherData.currently.windBearing} />
-                    <WindSpeed term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
-                    <WindSpeed term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
-                    <Humidity humidity={context.weatherData.currently.humidity} />
-                    <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
-                    <Visibility visibility={context.weatherData.currently.visibility} unit={context.unit} />
-                    <UvIndex uvIndex={context.weatherData.currently.uvIndex} />
+                    <Coordinates lat={context.weatherData.lat} lng={context.weatherData.lon} />
+                    <CurrentTime time={context.weatherData.current.dt} zone={context.weatherData.timezone} offset={context.weatherData.timezone_offset} />
+                    <Summary summary={context.weatherData.current.weather[0].description} />
+                    <Temperature term="current temperature" temperature={context.weatherData.current.temp} unit={context.unit} />
+                    <ApparentTemperature term="feels like" temperature={context.weatherData.current.feels_like} unit={context.unit} />
+                    <CloudCover value={context.weatherData.current.clouds} />
+                    {/* <PrecipProbability value={context.weatherData.currently.precipProbability} /> */}
+                    <AirPressure pressure={context.weatherData.current.pressure} unit={context.unit} />
+                    <WindDirection angle={context.weatherData.current.wind_deg} />
+                    <WindSpeed term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
+                    {context.weatherData.current.wind_gust && <WindSpeed term="wind gusts" speed={context.weatherData.current.wind_gust} unit={context.unit} />}
+                    <Humidity humidity={context.weatherData.current.humidity} />
+                    <DewPoint dewPoint={context.weatherData.current.dew_point} unit={context.unit} />
+                    <Visibility visibility={context.weatherData.current.visibility} unit={context.unit} />
+                    <UvIndex uvIndex={context.weatherData.current.uvi} />
                   </>
                 )}
               </ul>
