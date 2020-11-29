@@ -4,85 +4,63 @@ import {
   getDate,
 } from "./helpers"
 import Sun from "../reusable/Sun"
-import LunarPhase from "../reusable/LunarPhase"
 import UvIndex from "../reusable/uvIndex"
-import Visibility from "../reusable/Visibility"
 import DewPoint from "../reusable/DewPoint"
 import Humidity from "../reusable/Humidity"
 import WindSpeed from "../reusable/WindSpeed"
 import WindDirection from "../reusable/WindDirection"
 import AirPressure from "../reusable/AirPressure"
-import PrecipType from "../reusable/PrecipType"
-import Precipitation from "../reusable/Precipitation"
 import DailyPrecipitation from "../reusable/DailyPrecipitation"
 import PrecipProbability from "../reusable/PrecipProbability"
 import CloudCover from "../reusable/CloudCover"
-import ApparentTemperature from "../reusable/ApparentTemperature"
 import Temperature from "../reusable/Temperature"
 import Summary from "../reusable/Summary"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all, unit }) {
   const {
-    time,
-    icon,
-    summary,
-    temperatureMax,
-    temperatureMaxTime,
-    temperatureMin,
-    temperatureMinTime,
-    apparentTemperatureMax,
-    apparentTemperatureMaxTime,
-    apparentTemperatureMin,
-    apparentTemperatureMinTime,
-    cloudCover,
-    precipIntensity,
-    precipIntensityMax,
-    precipIntensityMaxTime,
-    precipProbability,
-    precipType,
+    dt: time,
+    weather,
+    temp,
+    clouds: cloudCover,
+    rain = 0,
+    snow = 0,
+    pop: precipProbability,
     pressure,
-    windBearing,
-    windGust,
-    windGustTime,
-    windSpeed,
+    wind_deg: windBearing,
+    wind_gust: windGust,
+    wind_speed: windSpeed,
     humidity,
-    dewPoint,
-    visibility,
-    uvIndex,
-    moonPhase,
-    sunriseTime,
-    sunsetTime,
+    dew_point: dewPoint,
+    uvi: uvIndex,
+    sunrise: sunriseTime,
+    sunset: sunsetTime,
   } = data
-  const { timezone, latitude } = all
+  const { min: temperatureMin, max: temperatureMax } = temp
+  const { id, icon, description: summary } = weather[0]
+  const { timezone } = all
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
       <h2>{getDate(time, timezone)}</h2>
       <div className="imag">
-        <CurrentImage icon={icon} style={{ fontSize: "96px"}} />
+        <CurrentImage id={id} icon={icon} style={{ fontSize: "96px"}} />
       </div>
       <ul>
-        <Summary summary={summary} icon={icon} temperature={temperatureMin} precipIntensity={precipIntensity} />
-        <Temperature term="maximum" temperature={temperatureMax} unit={unit} time={temperatureMaxTime} zone={timezone} />
-        <Temperature term="minimum" temperature={temperatureMin} unit={unit} time={temperatureMinTime} zone={timezone} />
-        <ApparentTemperature term="apparent maximum" temperature={apparentTemperatureMax} unit={unit} time={apparentTemperatureMaxTime} zone={timezone} />
-        <ApparentTemperature term="apparent minimum" temperature={apparentTemperatureMin} unit={unit} time={apparentTemperatureMinTime} zone={timezone} />
+        <Summary summary={summary} icon={icon} temperature={temperatureMin} precipIntensity={0} />
+        <Temperature term="maximum" temperature={temperatureMax} unit={unit} />
+        <Temperature term="minimum" temperature={temperatureMin} unit={unit} />
         <CloudCover value={cloudCover} />
         <PrecipProbability value={precipProbability} />
-        <DailyPrecipitation intensity={precipIntensity} unit={unit} type={precipType} />
-        <Precipitation term="maximal precipitation" intensity={precipIntensityMax} unit={unit} time={precipIntensityMaxTime} zone={timezone} />
-        <PrecipType type={precipType} />
+        <DailyPrecipitation rain={rain} snow={snow} unit={unit} />
         <AirPressure pressure={pressure} unit={unit} />
         <WindDirection angle={windBearing} />
         <WindSpeed term="wind speed" speed={windSpeed} unit={unit} />
-        <WindSpeed term="wind gusts" speed={windGust} unit={unit} time={windGustTime} zone={timezone} />
+        {windGust && windGust > 0 && <WindSpeed term="wind gusts" speed={windGust} unit={unit} />}
         <Humidity humidity={humidity} />
         <DewPoint dewPoint={dewPoint} unit={unit} />
-        <Visibility visibility={visibility} unit={unit} />
         <UvIndex uvIndex={uvIndex} />
         <Sun term="sunrise at" time={sunriseTime} zone={timezone} />
         <Sun term="sunset at" time={sunsetTime} zone={timezone} />
-        <LunarPhase moonPhase={moonPhase} lat={latitude} />
       </ul>
     </div>
   )

@@ -10,7 +10,7 @@ export default function Daily() {
         <AppContext.Consumer>
           {(context) =>
             "daily" in context.weatherData &&
-            context.weatherData.daily.data.map((day, index) => (
+            context.weatherData.daily.map((day, index) => (
               <DailyItem data={day} key={index} all={context.weatherData} unit={context.unit} />
             ))
           }
