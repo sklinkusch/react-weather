@@ -9,7 +9,6 @@ import Humidity from "../reusable/Humidity"
 import WindSpeed from "../reusable/WindSpeed"
 import WindDirection from "../reusable/WindDirection"
 import AirPressure from "../reusable/AirPressure"
-import PrecipProbability from "../reusable/PrecipProbability"
 import CloudCover from "../reusable/CloudCover"
 import ApparentTemperature from "../reusable/ApparentTemperature"
 import Temperature from "../reusable/Temperature"
@@ -49,8 +48,8 @@ const CurrentDesktop = () => (
                 )}
               </ul>
             </div>
-            {"currently" in context.weatherData && (
-              <CurrentImage icon={context.weatherData.currently.icon} style={{ fontSize: "152px"}} />
+            {"current" in context.weatherData && (
+              <CurrentImage id={context.weatherData.current.weather[0].id} icon={context.weatherData.current.weather[0].icon} style={{ fontSize: "152px"}} />
             )}
           </div>
         </div>
@@ -71,7 +70,7 @@ const CurrentMobile = () => (
                 </>
               )}
               {"current" in context.weatherData && (
-              <CurrentImage icon={context.weatherData.current.weather[0].id} style={{ fontSize: "152px"}} />
+              <CurrentImage id={context.weatherData.current.weather[0].id} icon={context.weatherData.current.weather[0].icon} style={{ fontSize: "152px"}} />
             )}
               <ul>
                 {"current" in context.weatherData && (
