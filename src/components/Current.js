@@ -30,7 +30,6 @@ const CurrentDesktop = () => (
               <ul>
                 {"current" in context.weatherData && (
                   <>
-                    {console.dir(context.weatherData.current)}
                     <Coordinates lat={context.weatherData.lat} lng={context.weatherData.lon} />
                     <Summary summary={context.weatherData.current.weather[0].description} icon={context.weatherData.current.weather[0].id} temperature={context.weatherData.current.temp} precipIntensity={0} />
                     <CurrentTime time={context.weatherData.current.dt} zone={context.weatherData.timezone} offset={context.weatherData.timezone_offset} />
