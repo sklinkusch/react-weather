@@ -15,6 +15,7 @@ import Temperature from "../reusable/Temperature"
 import Summary from "../reusable/Summary"
 import CurrentTime from "../reusable/CurrentTime"
 import Coordinates from "../reusable/Coordinates"
+import Precipitation from "../reusable/Precipitation"
 // import { getCountry, getAdminDiv } from "../data/"
 
 const CurrentDesktop = () => (
@@ -29,13 +30,16 @@ const CurrentDesktop = () => (
               <ul>
                 {"current" in context.weatherData && (
                   <>
+                    {console.dir(context.weatherData.current)}
                     <Coordinates lat={context.weatherData.lat} lng={context.weatherData.lon} />
                     <Summary summary={context.weatherData.current.weather[0].description} icon={context.weatherData.current.weather[0].id} temperature={context.weatherData.current.temp} precipIntensity={0} />
                     <CurrentTime time={context.weatherData.current.dt} zone={context.weatherData.timezone} offset={context.weatherData.timezone_offset} />
                     <Temperature term="current temperature" temperature={context.weatherData.current.temp} unit={context.unit} />
                     <ApparentTemperature term="feels like" temperature={context.weatherData.current.feels_like} unit={context.unit} />
                     <CloudCover value={context.weatherData.current.clouds} />
-                    {/* <PrecipProbability value={context.weatherData.currently.precipProbability} /> */}
+                    {"rain" in context.weatherData.current && !context.weatherData.current.hasOwnProperty("snow") && (<Precipitation term="precipitation" rain={context.weatherData.current.rain["1h"]} snow={0} unit={context.unit} />)}
+                    {"snow" in context.weatherData.current && !context.weatherData.current.hasOwnProperty("rain") && (<Precipitation term="precipitation" snow={context.weatherData.current.snow["1h"]} rain={0} unit={context.unit} />)}
+                    {"rain" in context.weatherData.current && "snow" in context.weatherData.current && (<Precipitation term="precipitation" snow={context.weatherData.current.snow["1h"]} rain={context.weatherData.current.rain["1h"]} unit={context.unit} />)}
                     <AirPressure pressure={context.weatherData.current.pressure} unit={context.unit} />
                     <WindDirection angle={context.weatherData.current.wind_deg} />
                     <WindSpeed term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
