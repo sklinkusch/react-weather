@@ -13,7 +13,7 @@ function App() {
       <TitleImage />
       <Current />
       <Daily />
-      {/* <Hourly /> */}
+      <Hourly />
     </div>
   );
 }
