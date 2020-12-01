@@ -134,20 +134,75 @@ const UvWarning = ({uvIndex}) => {
   return ""
 }
 
-const OtherWarning = ({icon = "", summary = "", temperature = 10, precipIntensity = 0}) => {
-  if(icon.includes("tornado") || summary.includes("tornado")) {
-    return <Warning style={{ color: "red" }} title="tornado" />
+const OtherWarning = ({id = null, icon = "", summary = "", temperature = 10, precipIntensity = 0}) => {
+  switch(id){
+    case 200:
+      return <Warning style={{color: "yellow" }} title="thunderstorm with light rain" />
+    case 201:
+      return <Warning style={{color: "orange"}} title="thunderstorm with rain" />
+    case 202:
+      return <Warning style={{color: "red"}} title="thunderstorm with heavy rain" />
+    case 210:
+      return <Warning style={{color: "yellow"}} title="light thunderstorm" />
+    case 211:
+      return <Warning style={{color: "yellow"}} title="thunderstorm" />
+    case 212:
+      return <Warning style={{color: "red"}} title="heavy thunderstorm" />
+    case 221:
+      return <Warning style={{color: "red"}} title="ragged thunderstorm" />
+    case 230:
+      return <Warning style={{color: "yellow"}} title="thunderstorm with light drizzle" />
+    case 231:
+      return <Warning style={{color: "yellow"}} title="thunderstorm with drizzle" />
+    case 232:
+      return <Warning style={{color: "orange"}} title="thunderstorm with heavy drizzle" />
+    case 502:
+      return <Warning style={{color: "orange"}} title="heavy intensity rain" />
+    case 503:
+      return <Warning style={{color: "red"}} title="very heavy rain" />
+    case 504:
+      return <Warning style={{color: "purple"}} title="extreme rain" />
+    case 511:
+      return <Warning style={{color: "red"}} title="freezing rain" />
+    case 522:
+      return <Warning style={{color: "orange"}} title="heavy intensity shower rain" />
+    case 531:
+      return <Warning style={{color: "red"}} title="ragged shower rain" />
+    case 600:
+      return <Warning style={{color: "yellow"}} title="light snow" />
+    case 601:
+      return <Warning style={{color: "orange"}} title="snow" />
+    case 602:
+      return <Warning style={{color: "red"}} title="heavy snow" />
+    case 620:
+      return <Warning style={{color: "yellow"}} title="light shower snow" />
+    case 621:
+      return <Warning style={{color: "orange"}} title="shower snow" />
+    case 622:
+      return <Warning style={{color: "red"}} title="heavy shower snow" />
+    case 701:
+      return <Warning style={{color: "yellow"}} title="mist" />
+    case 711:
+      return <Warning style={{color: "green"}} title="smoke" />
+    case 721:
+      return <Warning style={{color: "yellow"}} title="haze" />
+    case 731:
+      return <Warning style={{color: "green"}} title="dust/sand whirls" />
+    case 741:
+      return <Warning style={{color: "yellow"}} title="fog" />
+    case 751:
+      return <Warning style={{color: "green"}} title="sand" />
+    case 761:
+      return <Warning style={{color: "green"}} title="dust" />
+    case 762:
+      return <Warning style={{color: "green"}} title="volcanic ash" />
+    case 771:
+      return <Warning style={{color: "orange"}} title="squall" />
+    case 781:
+      return <Warning style={{color: "purple"}} title="tornado" />
+    default:
+      return null
   }
-  if(icon.includes("hail") || summary.includes("hail")) {
-    return <Warning style={{ color: "orange" }} title="hail" />
-  }
-  if(icon.includes("thunderstorm") || summary.includes("thunderstorm")) {
-    return <Warning style={{ color: "yellow"}} title="thunderstorm" />
-  }
-  if(temperature <= 0 && precipIntensity > 0){
-    return <Warning style={{ color: "orange" }} title="black ice" />
-  }
-  return ""
 }
 
 export { FogWarning, HotAndHumidWarning, WindWarning, PersistentPrecipWarning, RainWarning, LowTemperatureWarning, HighTemperatureWarning, UvWarning, OtherWarning, SnowWarning }

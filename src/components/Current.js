@@ -31,7 +31,7 @@ const CurrentDesktop = () => (
                 {"current" in context.weatherData && (
                   <>
                     <Coordinates lat={context.weatherData.lat} lng={context.weatherData.lon} />
-                    <Summary summary={context.weatherData.current.weather[0].description} icon={context.weatherData.current.weather[0].id} temperature={context.weatherData.current.temp} precipIntensity={0} />
+                    <Summary summary={context.weatherData.current.weather[0].description} icon={context.weatherData.current.weather[0].icon} id={context.weatherData.current.weather[0].id} temperature={context.weatherData.current.temp} precipIntensity={0} />
                     <CurrentTime time={context.weatherData.current.dt} zone={context.weatherData.timezone} offset={context.weatherData.timezone_offset} />
                     <Temperature term="current temperature" temperature={context.weatherData.current.temp} unit={context.unit} />
                     <ApparentTemperature term="feels like" temperature={context.weatherData.current.feels_like} unit={context.unit} />

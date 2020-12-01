@@ -14,7 +14,7 @@ import DailyPrecipitation from "../reusable/DailyPrecipitation"
 import PrecipProbability from "../reusable/PrecipProbability"
 import CloudCover from "../reusable/CloudCover"
 import Temperature from "../reusable/Temperature"
-import ApparentTemperature from "../reusable/ApparentTemperature"
+import TemperatureApparent from "../reusable/TemperatureApparent"
 import Summary from "../reusable/Summary"
 // import "../styles/DailyItem.scss";
 
@@ -50,17 +50,13 @@ export default function DailyItem({ data, all, unit }) {
         <CurrentImage id={id} icon={icon} style={{ fontSize: "96px"}} />
       </div>
       <ul>
-        <Summary summary={summary} icon={icon} temperature={temperatureMin} precipIntensity={0} />
+        <Summary summary={summary} id={id} icon={icon} temperature={temperatureMin} precipIntensity={0} />
         <Temperature term="maximum" temperature={temperatureMax} unit={unit} />
         <Temperature term="minimum" temperature={temperatureMin} unit={unit} />
-        <Temperature term="morning temperature" temperature={temperatureMorn} unit={unit} />
-        <Temperature term="daytime temperature" temperature={temperatureDay} unit={unit} />
-        <Temperature term="evening temperature" temperature={temperatureEve} unit={unit} />
-        <Temperature term="night temperature" temperature={temperatureNight} unit={unit} />
-        <ApparentTemperature term="apparent morning temperature" temperature={appTemperatureMorn} unit={unit} />
-        <ApparentTemperature term="apparent daytime temperature" temperature={appTemperatureDay} unit={unit} />
-        <ApparentTemperature term="apparent evening temperature" temperature={appTemperatureEve} unit={unit} />
-        <ApparentTemperature term="apparent night temperature" temperature={appTemperatureNight} unit={unit} />
+        <TemperatureApparent term="morning" temp={temperatureMorn} app={appTemperatureMorn} unit={unit} />
+        <TemperatureApparent term="daytime" temp={temperatureDay} app={appTemperatureDay} unit={unit} />
+        <TemperatureApparent term="evening" temp={temperatureEve} app={appTemperatureEve} unit={unit} />
+        <TemperatureApparent term="night" temp={temperatureNight} app={appTemperatureNight} unit={unit} />
         <CloudCover value={cloudCover} />
         <PrecipProbability value={precipProbability} />
         <DailyPrecipitation rain={rain} snow={snow} unit={unit} />

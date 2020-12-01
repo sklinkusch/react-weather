@@ -1,10 +1,10 @@
 import React from 'react'
 import { OtherWarning } from '../components/Warning'
 
-const Summary = ({summary, icon, temperature, precipIntensity}) => {
+const Summary = ({summary, id, icon, temperature, precipIntensity}) => {
   return (
   <li>
-    {summary} <OtherWarning summary={summary} temperature={temperature} precipIntensity={precipIntensity} />
+    {summary} <OtherWarning id={id} summary={summary} temperature={temperature} precipIntensity={precipIntensity} />
   </li>
 )}
 
