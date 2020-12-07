@@ -19,7 +19,6 @@ import Summary from "../reusable/Summary"
 // import "../styles/DailyItem.scss";
 
 export default function DailyItem({ data, all, unit }) {
-  console.dir(data)
   const {
     dt: time,
     weather,

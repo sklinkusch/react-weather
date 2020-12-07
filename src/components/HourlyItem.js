@@ -19,7 +19,6 @@ import Visibility from "../reusable/Visibility"
 import UvIndex from "../reusable/uvIndex"
 
 export default function HourlyItem({data, all, unit}) {
-  console.dir(data)
   const { dt: time, weather, temp: temperature, feels_like: apparentTemperature, clouds: cloudCover, pop: precipProbability, rain = {}, snow = {}, pressure, wind_deg: windBearing, wind_speed: windSpeed, wind_gust: windGust, humidity, dew_point: dewPoint, visibility, uvi: uvIndex } = data
   const { id, icon, description: summary } = weather[0]
   const { "1h": rain1h = 0 } = rain
