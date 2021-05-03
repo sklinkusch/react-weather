@@ -29,6 +29,10 @@ const getPercent = (decimal) => {
   return `${(decimal).toFixed(0)}%`
 }
 
+const getPercent2 = (decimal) => {
+  return `${(100 * decimal).toFixed(0)}%`
+}
+
 const getKilometers = (length) => {
   return `${length.toFixed(1)} km`
 }
@@ -155,6 +159,7 @@ export {
   getFahrenheit,
   getTemperature,
   getPercent,
+  getPercent2,
   getMiles,
   getLength,
   getInch,

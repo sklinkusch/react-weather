@@ -1,9 +1,9 @@
 import React from 'react'
-import { getPercent } from '../components/helpers'
+import { getPercent2 } from '../components/helpers'
 
 const PrecipProbability = ({value}) => (
   <li>
-    precipitation probability: {getPercent(value)}
+    precipitation probability: {getPercent2(value)}
   </li>
 )
 
