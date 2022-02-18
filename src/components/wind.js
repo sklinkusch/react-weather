@@ -1,5 +1,5 @@
 import React from "react"
-import { WiWindDeg, WiMoonNew, WiWindBeaufort0, WiWindBeaufort1, WiWindBeaufort2, WiWindBeaufort3, WiWindBeaufort4, WiWindBeaufort5, WiWindBeaufort6, WiWindBeaufort7, WiWindBeaufort8, WiWindBeaufort9, WiWindBeaufort10, WiWindBeaufort11, WiWindBeaufort12 } from "weather-icons-react"
+import { WiWindDeg, WiMoonNew, WiWindBeaufort0, WiWindBeaufort1, WiWindBeaufort2, WiWindBeaufort3, WiWindBeaufort4, WiWindBeaufort5, WiWindBeaufort6, WiWindBeaufort7, WiWindBeaufort8, WiWindBeaufort9, WiWindBeaufort10, WiWindBeaufort11, WiWindBeaufort12, WiTornado } from "weather-icons-react"
 
 const getDirection = (angle) => {
   if(typeof angle === "number"){
@@ -36,12 +36,55 @@ const getBeaufort = (speed) => {
     return <WiWindBeaufort10 style={{...styleObject}} />
   } else if (speed < 118.53) {
     return <WiWindBeaufort11 style={{...styleObject}} />
-  } else if (speed >= 118.53) {
+  } else if (speed < 131.49) {
     return <WiWindBeaufort12 style={{...styleObject}} />
   } else {
-    return "?"
+    return ""
   }
 }
+
+const getTorro = (speed) => {
+  const styleObject = { fontSize: "1.6em" }
+  if (speed < 131.49) {
+    return ""
+  } else if (speed >= 131.49) {
+    return (
+      <React.Fragment>
+        <WiTornado style={{...styleObject}} />
+        {getTorroInner(speed)}
+      </React.Fragment>
+    )
+  } else {
+    return null
+  }
+}
+
+const getTorroInner = (speed) => {
+  if (speed < 150.01) {
+    return "T2"
+  } else if (speed < 185.2) {
+    return "T3"
+  } else if (speed < 223.2) {
+    return "T4"
+  } else if (speed < 262.8) {
+    return "T5"
+  } else if (speed < 302.4) {
+    return "T6"
+  } else if (speed < 345.6) {
+    return "T7"
+  } else if (speed < 388.8) {
+    return "T8"
+  } else if (speed < 435.6) {
+    return "T9"
+  } else if (speed < 486) {
+    return "T10"
+  } else if (speed >= 486) {
+    return "T11"
+  } else {
+    return null
+  }
+}
+
 const getKph = (speed) => {
   if (speed) {
     return `${speed.toFixed(1)} km/h`
@@ -63,4 +106,4 @@ const getVelocity = (speed, unit) => {
   }
 }
 
-export { getDirection, getBeaufort, getKph, getMph, getVelocity }
+export { getDirection, getTorro, getBeaufort, getKph, getMph, getVelocity }
