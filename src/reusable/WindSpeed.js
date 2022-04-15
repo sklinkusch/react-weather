@@ -15,8 +15,8 @@ const WindSpeed = ({term, speed, unit, time = undefined, zone = undefined}) => {
   }
     return (
       <li>
-        {term}: {getBeaufort(speedKph)} ({getVelocity(speedKph, unit)}){" "}
-        <WindWarning velocity={speedKph} />
+        {term}: {getBeaufort(speed)}{getTorro(speed)} ({getVelocity(speed, unit)}){" "}
+        <WindWarning velocity={speed} />
       </li>
     )
 }

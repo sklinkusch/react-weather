@@ -3,7 +3,7 @@ import CurrentImage from "./CurrentImage"
 import {
   getTime,
 } from "./helpers"
-import "../styles/HourlyItem.scss"
+import "../styles/HourlyItem.css"
 import Summary from "../reusable/Summary"
 import Temperature from "../reusable/Temperature"
 import ApparentTemperature from "../reusable/ApparentTemperature"

@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  .text-container {
-    flex: 0 0 65%;
-    text-align: left;
-    font-weight: bold;
-  }
-  .img-container {
-    flex: 0 0 30%;
-  }
+}
+.sk-flex-row .text-container {
+  flex: 0 0 65%;
+  text-align: left;
+  font-weight: bold;
+}
+.sk-flex-row .img-container {
+  flex: 0 0 30%;
 }
 #todayImage img {
   width: 100%;
