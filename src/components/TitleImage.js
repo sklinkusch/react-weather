@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/TitleImage.scss";
+import "../styles/TitleImage.css";
 
 export default function TitleImage() {
   return (

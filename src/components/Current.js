@@ -1,6 +1,6 @@
 import React, {Fragment} from "react"
 import AppContext from "../context/AppContext"
-import "../styles/Current.scss"
+import "../styles/Current.css"
 import CurrentImage from "./CurrentImage"
 import UvIndex from "../reusable/uvIndex"
 import Visibility from "../reusable/Visibility"
