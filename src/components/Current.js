@@ -16,6 +16,7 @@ import Temperature from "../reusable/Temperature"
 import Summary from "../reusable/Summary"
 import CurrentTime from "../reusable/CurrentTime"
 import Coordinates from "../reusable/Coordinates"
+import SunPosition from "./SunPosition"
 // import { getCountry, getAdminDiv } from "../data/"
 
 const CurrentDesktop = () => (
@@ -45,6 +46,7 @@ const CurrentDesktop = () => (
                     <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
                     <Visibility visibility={context.weatherData.currently.visibility} unit={context.unit} />
                     <UvIndex uvIndex={context.weatherData.currently.uvIndex} />
+                    <SunPosition lat={context.weatherData.latitude} lng={context.weatherData.longitude} time={context.weatherData.currently.time} zone={context.weatherData.timezone} offset={context.weatherData.offset} />
                   </>
                 )}
               </ul>
@@ -91,6 +93,7 @@ const CurrentMobile = () => (
                     <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
                     <Visibility visibility={context.weatherData.currently.visibility} unit={context.unit} />
                     <UvIndex uvIndex={context.weatherData.currently.uvIndex} />
+                    <SunPosition lat={context.weatherData.latitude} lng={context.weatherData.longitude} time={context.weatherData.currently.time} zone={context.weatherData.timezone} offset={context.weatherData.offset} />
                   </>
                 )}
               </ul>
