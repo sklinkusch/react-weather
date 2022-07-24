@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/js/all.min.js";
@@ -7,7 +7,9 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import AppProvider from './context/AppProvider';
 
-ReactDOM.render(<AppProvider><App /></AppProvider>, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+root.render(<AppProvider><App /></AppProvider>);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
