@@ -127,12 +127,16 @@ const getCoordinates = (value, identifier) => {
     sign = ""
   }
   const abs = Math.abs(value)
-  const deg = Math.floor(abs)
+  let deg = Math.floor(abs)
   const degRem = abs - deg
   const minRaw = 60 * degRem
-  const min = Math.floor(minRaw)
+  let min = Math.floor(minRaw)
   const minRem = minRaw - min
-  const sec = 60 * minRem.toFixed(1)
+  let sec = (60 * minRem).toFixed(1)
+  min = sec === '60.0' ? min + 1 : min
+  sec = sec === '60.0' ? '0.0' : sec
+  deg = min === 60 ? deg + 1 : deg
+  min = min === 60 ? 0 : min
   const string = `${deg}° ${min}' ${sec}" ${sign}`
   return string
 }
