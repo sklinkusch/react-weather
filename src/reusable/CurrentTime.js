@@ -1,10 +1,14 @@
 import React from 'react'
-import { getTime, getTimezone } from '../components/helpers'
+import { getTime, getTimezoneDarkSky, getTimezoneOWM } from '../components/helpers'
 
-const CurrentTime = ({time, zone, offset}) => (
+export const CurrentTimeDarksky = ({time, zone, offset}) => (
   <li>
-    current time: {getTime(time, zone)} ({getTimezone(offset)})
+    current time: {getTime(time, zone)} ({getTimezoneDarkSky(offset)})
   </li>
 ) 
 
-export default CurrentTime
+export const CurrentTimeOWM = ({time, zone, offset}) => (
+  <li>
+    current time: {getTime(time, zone)} ({getTimezoneOWM(offset)})
+  </li>
+) 

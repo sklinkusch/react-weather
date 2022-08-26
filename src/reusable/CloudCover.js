@@ -1,10 +1,14 @@
 import React from 'react'
 import { getPercent } from '../components/helpers'
 
-const CloudCover = ({value}) => (
+export const CloudCoverDarkSky = ({value}) => (
   <li>
     cloud cover: {getPercent(value)}
   </li>
 )
 
-export default CloudCover
+export const CloudCoverOWM = ({value}) => (
+  <li>
+    cloud cover: {`${value}%`}
+  </li>
+)

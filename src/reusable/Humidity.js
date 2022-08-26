@@ -1,10 +1,14 @@
 import React from 'react'
 import { getPercent } from '../components/helpers'
 
-const Humidity = ({humidity}) => (
+export const HumidityDarkSky = ({humidity}) => (
   <li>
     relative humidity: {getPercent(humidity)}
   </li>
 )
 
-export default Humidity
+export const HumidityOWM = ({humidity}) => (
+  <li>
+    relative humidity: {`${humidity}%`}
+  </li>
+)

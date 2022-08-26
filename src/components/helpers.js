@@ -38,11 +38,19 @@ const getMiles = (length) => {
   return `${miles.toFixed(1)} mi`
 }
 
-const getLength = (length, unit) => {
+const getLengthDarkSky = (length, unit) => {
   if(unit === "celsius"){
     return getKilometers(length)
   } else {
     return getMiles(length)
+  }
+}
+const getLengthOWM = (length, unit) => {
+  const kilometers = length / 1000
+  if(unit === "celsius"){
+    return getKilometers(kilometers)
+  } else {
+    return getMiles(kilometers)
   }
 }
 const getMm = (length) => {
@@ -99,12 +107,25 @@ const dayNumberToString = (number) => {
   }
 }
 
-const getTimezone = (offset) => {
+const getTimezoneDarkSky = (offset) => {
   const sign = offset >= 0 ? "+" : "-"
   const absolute = Math.abs(offset)
   let hours = Math.floor(absolute)
   hours = hours < 10 ? `0${hours}` : `${hours}`
   const remainder = absolute - hours
+  let minutes = 60 * remainder
+  minutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+  const string = `UTC${sign}${hours}:${minutes}`
+  return string
+}
+
+const getTimezoneOWM = (offset) => {
+  const sign = offset >= 0 ? "+" : "-"
+  const absolute = Math.abs(offset)
+  const hoursRaw = absolute/3600
+  let hours = Math.floor(hoursRaw)
+  hours = hours < 10 ? `0${hours}` : `${hours}`
+  const remainder = hoursRaw - hours
   let minutes = 60 * remainder
   minutes = minutes < 10 ? `0${minutes}` : `${minutes}`
   const string = `UTC${sign}${hours}:${minutes}`
@@ -158,12 +179,14 @@ export {
   getTemperature,
   getPercent,
   getMiles,
-  getLength,
+  getLengthDarkSky,
+  getLengthOWM,
   getInch,
   getPrecip,
   getTime,
   getDate,
-  getTimezone,
+  getTimezoneDarkSky,
+  getTimezoneOWM,
   getCoordinates,
   getPressure
 }

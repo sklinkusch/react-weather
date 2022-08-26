@@ -80,6 +80,10 @@ const RainWarning = ({precipIntensity}) => {
   }
 }
 
+const SnowWarning = () => {
+  return <Warning style={{ color: "yellow" }} title="Snow" />
+}
+
 const LowTemperatureWarning = ({temperature}) => {
   if(temperature >= -10 && temperature <= 0){
     return <Warning style={{color: "yellow"}} title="Frost" />
@@ -146,4 +150,4 @@ const OtherWarning = ({icon = "", summary = "", temperature = 10, precipIntensit
   return ""
 }
 
-export { FogWarning, HotAndHumidWarning, WindWarning, PersistentPrecipWarning, RainWarning, LowTemperatureWarning, HighTemperatureWarning, UvWarning, OtherWarning }
+export { FogWarning, HotAndHumidWarning, WindWarning, PersistentPrecipWarning, RainWarning, SnowWarning, LowTemperatureWarning, HighTemperatureWarning, UvWarning, OtherWarning }

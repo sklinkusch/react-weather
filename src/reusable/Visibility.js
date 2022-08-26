@@ -1,12 +1,17 @@
 import React from 'react'
-import { getLength } from '../components/helpers'
+import { getLengthDarkSky, getLengthOWM } from '../components/helpers'
 import { FogWarning } from '../components/Warning'
 
-const Visibility = ({visibility, unit}) => (
+export const VisibilityDarkSky = ({visibility, unit}) => (
   <li>
-    visibility: {getLength(visibility, unit)}{" "}
-    <FogWarning visibility={visibility} />
+    visibility: {getLengthDarkSky(visibility, unit)}{" "}
+    <FogWarning visibility={visibility} isOWM={false} />
   </li>
 )
 
-export default Visibility
+export const VisibilityOWM = ({visibility, unit}) => (
+  <li>
+    visibility: {getLengthOWM(visibility, unit)}{" "}
+    <FogWarning visibility={visibility} idOWM={true} />
+  </li>
+)

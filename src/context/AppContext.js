@@ -1,5 +1,7 @@
 import React from 'react'
 
-const AppContext = React.createContext();
+const DarkSkyContext = React.createContext();
 
-export default AppContext;
+const OWMContext = React.createContext();
+
+export { DarkSkyContext, OWMContext }
