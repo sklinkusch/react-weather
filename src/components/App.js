@@ -28,7 +28,6 @@ function OpenWeatherMap() {
       <CurrentOWM />
       <DailyOWM />
       <HourlyOWM />
-      {/* <MinutelyOWM /> */}
     </OWMProvider>
   )
 }
