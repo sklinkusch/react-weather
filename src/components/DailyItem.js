@@ -9,7 +9,7 @@ import UvIndex from "../reusable/uvIndex"
 import { VisibilityDarkSky } from "../reusable/Visibility"
 import DewPoint from "../reusable/DewPoint"
 import { HumidityDarkSky, HumidityOWM } from "../reusable/Humidity"
-import WindSpeed from "../reusable/WindSpeed"
+import { WindSpeedDarkSky, WindSpeedOWM } from "../reusable/WindSpeed"
 import WindDirection from "../reusable/WindDirection"
 import AirPressure from "../reusable/AirPressure"
 import PrecipType from "../reusable/PrecipType"
@@ -75,8 +75,8 @@ export function DailyItemDarkSky({ data, all, unit }) {
         <PrecipType type={precipType} />
         <AirPressure pressure={pressure} unit={unit} />
         <WindDirection angle={windBearing} />
-        <WindSpeed term="wind speed" speed={windSpeed} unit={unit} />
-        <WindSpeed term="wind gusts" speed={windGust} unit={unit} time={windGustTime} zone={timezone} />
+        <WindSpeedDarkSky term="wind speed" speed={windSpeed} unit={unit} />
+        <WindSpeedDarkSky term="wind gusts" speed={windGust} unit={unit} time={windGustTime} zone={timezone} />
         <HumidityDarkSky humidity={humidity} />
         <DewPoint dewPoint={dewPoint} unit={unit} />
         <VisibilityDarkSky visibility={visibility} unit={unit} />
@@ -132,8 +132,8 @@ export function DailyItemOWM({ data, all, unit }) {
         <DailyPrecipitationOWM rain={rain} snow={snow} unit={unit} />
         <AirPressure pressure={pressure} unit={unit} />
         <WindDirection angle={windBearing} />
-        <WindSpeed term="wind speed" speed={windSpeed} unit={unit} />
-        {windGust && windGust > 0 && <WindSpeed term="wind gusts" speed={windGust} unit={unit} />}
+        <WindSpeedOWM term="wind speed" speed={windSpeed} unit={unit} />
+        {windGust && windGust > 0 && <WindSpeedOWM term="wind gusts" speed={windGust} unit={unit} />}
         <HumidityOWM humidity={humidity} />
         <DewPoint dewPoint={dewPoint} unit={unit} />
         <UvIndex uvIndex={uvIndex} />

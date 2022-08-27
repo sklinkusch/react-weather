@@ -6,7 +6,7 @@ import UvIndex from "../reusable/uvIndex"
 import { VisibilityDarkSky, VisibilityOWM } from "../reusable/Visibility"
 import DewPoint from "../reusable/DewPoint"
 import { HumidityDarkSky, HumidityOWM } from "../reusable/Humidity"
-import WindSpeed from "../reusable/WindSpeed"
+import { WindSpeedDarkSky, WindSpeedOWM } from "../reusable/WindSpeed"
 import WindDirection from "../reusable/WindDirection"
 import AirPressure from "../reusable/AirPressure"
 import { PrecipitationOWM } from "../reusable/Precipitation"
@@ -41,8 +41,8 @@ const CurrentDarkSkyDesktop = () => (
                     <PrecipProbability value={context.weatherData.currently.precipProbability} />
                     <AirPressure pressure={context.weatherData.currently.pressure} unit={context.unit} />
                     <WindDirection angle={context.weatherData.currently.windBearing} />
-                    <WindSpeed term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
-                    <WindSpeed term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
+                    <WindSpeedDarkSky term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
+                    <WindSpeedDarkSky term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
                     <HumidityDarkSky humidity={context.weatherData.currently.humidity} />
                     <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
                     <VisibilityDarkSky visibility={context.weatherData.currently.visibility} unit={context.unit} />
@@ -88,8 +88,8 @@ const CurrentDarkSkyMobile = () => (
                     <PrecipProbability value={context.weatherData.currently.precipProbability} />
                     <AirPressure pressure={context.weatherData.currently.pressure} unit={context.unit} />
                     <WindDirection angle={context.weatherData.currently.windBearing} />
-                    <WindSpeed term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
-                    <WindSpeed term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
+                    <WindSpeedDarkSky term="wind speed" speed={context.weatherData.currently.windSpeed} unit={context.unit} />
+                    <WindSpeedDarkSky term="wind gusts" speed={context.weatherData.currently.windGust} unit={context.unit} />
                     <HumidityDarkSky humidity={context.weatherData.currently.humidity} />
                     <DewPoint dewPoint={context.weatherData.currently.dewPoint} unit={context.unit} />
                     <VisibilityDarkSky visibility={context.weatherData.currently.visibility} unit={context.unit} />
@@ -137,8 +137,8 @@ const CurrentOWMDesktop = () => (
                     {"rain" in context.weatherData.current && "snow" in context.weatherData.current && (<PrecipitationOWM term="precipitation" snow={context.weatherData.current.snow["1h"]} rain={context.weatherData.current.rain["1h"]} unit={context.unit} />)}
                     <AirPressure pressure={context.weatherData.current.pressure} unit={context.unit} />
                     <WindDirection angle={context.weatherData.current.wind_deg} />
-                    <WindSpeed term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
-                    {context.weatherData.current.wind_gust && <WindSpeed term="wind gusts" speed={context.weatherData.current.wind_gust} unit={context.unit} />}
+                    <WindSpeedOWM term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
+                    {context.weatherData.current.wind_gust && <WindSpeedOWM term="wind gusts" speed={context.weatherData.current.wind_gust} unit={context.unit} />}
                     <HumidityOWM humidity={context.weatherData.current.humidity} />
                     <DewPoint dewPoint={context.weatherData.current.dew_point} unit={context.unit} />
                     <VisibilityOWM visibility={context.weatherData.current.visibility} unit={context.unit} />
@@ -183,8 +183,8 @@ const CurrentOWMMobile = () => (
                     {/* <PrecipProbability value={context.weatherData.currently.precipProbability} /> */}
                     <AirPressure pressure={context.weatherData.current.pressure} unit={context.unit} />
                     <WindDirection angle={context.weatherData.current.wind_deg} />
-                    <WindSpeed term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
-                    {context.weatherData.current.wind_gust && <WindSpeed term="wind gusts" speed={context.weatherData.current.wind_gust} unit={context.unit} />}
+                    <WindSpeedOWM term="wind speed" speed={context.weatherData.current.wind_speed} unit={context.unit} />
+                    {context.weatherData.current.wind_gust && <WindSpeedOWM term="wind gusts" speed={context.weatherData.current.wind_gust} unit={context.unit} />}
                     <HumidityOWM humidity={context.weatherData.current.humidity} />
                     <DewPoint dewPoint={context.weatherData.current.dew_point} unit={context.unit} />
                     <VisibilityOWM visibility={context.weatherData.current.visibility} unit={context.unit} />

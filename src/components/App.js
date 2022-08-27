@@ -5,7 +5,7 @@ import '../styles/App.css';
 import { HeaderDarkSky, HeaderOWM } from './Header';
 import TitleImage from './TitleImage';
 import { CurrentDarkSky, CurrentOWM } from './Current';
-// import Hourly from './Hourly';
+import { HourlyDarkSky, HourlyOWM } from './Hourly';
 import { DailyDarkSky, DailyOWM } from './Daily';
 
 function DarkSky() {
@@ -15,7 +15,7 @@ function DarkSky() {
       <TitleImage />
       <CurrentDarkSky />
       <DailyDarkSky />
-      {/* <HourlyDarkSky /> */}
+      <HourlyDarkSky />
     </DarkSkyProvider>
   )
 }
@@ -27,7 +27,7 @@ function OpenWeatherMap() {
       <TitleImage />
       <CurrentOWM />
       <DailyOWM />
-      {/* <HourlyOWM /> */}
+      <HourlyOWM />
       {/* <MinutelyOWM /> */}
     </OWMProvider>
   )
