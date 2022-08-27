@@ -1,20 +1,38 @@
 import React from "react"
-import AppContext from "../context/AppContext"
-import DailyItem from "./DailyItem"
+import { DarkSkyContext, OWMContext } from "../context/AppContext"
+import { DailyItemDarkSky, DailyItemOWM } from "./DailyItem"
 
-export default function Daily() {
+export  function DailyDarkSky() {
   return (
     <div className="container">
       <h2>Daily forecast</h2>
       <div className="row">
-        <AppContext.Consumer>
+        <DarkSkyContext.Consumer>
           {(context) =>
             "daily" in context.weatherData &&
             context.weatherData.daily.data.map((day, index) => (
-              <DailyItem data={day} key={index} all={context.weatherData} unit={context.unit} />
+              <DailyItemDarkSky data={day} key={index} all={context.weatherData} unit={context.unit} />
             ))
           }
-        </AppContext.Consumer>
+        </DarkSkyContext.Consumer>
+      </div>
+    </div>
+  )
+}
+
+export  function DailyOWM() {
+  return (
+    <div className="container">
+      <h2>Daily forecast</h2>
+      <div className="row">
+        <OWMContext.Consumer>
+          {(context) =>
+            "daily" in context.weatherData &&
+            context.weatherData.daily.map((day, index) => (
+              <DailyItemOWM data={day} key={index} all={context.weatherData} unit={context.unit} />
+            ))
+          }
+        </OWMContext.Consumer>
       </div>
     </div>
   )

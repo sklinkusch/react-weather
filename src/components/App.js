@@ -6,7 +6,7 @@ import { HeaderDarkSky, HeaderOWM } from './Header';
 import TitleImage from './TitleImage';
 import { CurrentDarkSky, CurrentOWM } from './Current';
 // import Hourly from './Hourly';
-// import Daily from './Daily';
+import { DailyDarkSky, DailyOWM } from './Daily';
 
 function DarkSky() {
   return (
@@ -14,7 +14,7 @@ function DarkSky() {
       <HeaderDarkSky />
       <TitleImage />
       <CurrentDarkSky />
-      {/* <DailyDarkSky /> */}
+      <DailyDarkSky />
       {/* <HourlyDarkSky /> */}
     </DarkSkyProvider>
   )
@@ -26,7 +26,7 @@ function OpenWeatherMap() {
       <HeaderOWM />
       <TitleImage />
       <CurrentOWM />
-      {/* <DailyOWM /> */}
+      <DailyOWM />
       {/* <HourlyOWM /> */}
       {/* <MinutelyOWM /> */}
     </OWMProvider>
