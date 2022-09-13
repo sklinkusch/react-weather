@@ -33,20 +33,20 @@ function OpenWeatherMap() {
 }
 
 function App() {
-  // let pathProps
-  // switch(process.env.NODE_ENV) {
-  //   case "development":
-  //     pathProps = { basename: process.env.PUBLIC_URL }
-  //     break
-  //   case "production":
-  //     pathProps = { basename: process.env.PUBLIC_URL }
-  //     break
-  //   default:
-  //     pathProps = { basename: process.env.PUBLIC_URL }
-  // }
+  let pathProps
+  switch(process.env.NODE_ENV) {
+    case "development":
+      pathProps = { basename: process.env.PUBLIC_URL }
+      break
+    case "production":
+      pathProps = { basename: process.env.PUBLIC_URL }
+      break
+    default:
+      pathProps = { basename: process.env.PUBLIC_URL }
+  }
   return (
     <div className="App">
-      <Router>
+      <Router {...pathProps}>
         <Suspense>
           <Routes>
             <Route path='/darksky/:id' element={<DarkSky />} />
