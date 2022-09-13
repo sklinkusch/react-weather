@@ -90,6 +90,11 @@ export function HeaderDarkSky() {
     const unit = e.target.value
     weatherContext.setUnit(unit)
   }
+  const selectSource = (e) => {
+    const nextSrc = e.target.value
+    const key = weatherContext.selectedCity.key
+    if (nextSrc === "OWM") navigate(`/owm/${key}`)
+  }
   const filterData = (e) => {
     const filterValue = e.target.value
     const firstFilteredCity = weatherContext.cities.filter(
@@ -140,6 +145,10 @@ export function HeaderDarkSky() {
             <option value="celsius">°C</option>
             <option value="fahrenheit">°F</option>
           </select>
+          <select value="DS" onChange={selectSource}>
+            <option value="DS">DS</option>
+            <option value="OWM">OWM</option>
+          </select>
           </Collapse>
         </Navbar>
       )}
@@ -178,6 +187,11 @@ export function HeaderOWM() {
   const selectUnit = (e) => {
     const unit = e.target.value
     weatherContext.setUnit(unit)
+  }
+  const selectSource = (e) => {
+    const nextSrc = e.target.value
+    const key = weatherContext.selectedCity.key
+    if (nextSrc === "DS") navigate(`/darksky/${key}`)
   }
   const filterData = (e) => {
     const filterValue = e.target.value
@@ -228,6 +242,10 @@ export function HeaderOWM() {
           <select value={context.unit} onChange={selectUnit}>
             <option value="celsius">°C</option>
             <option value="fahrenheit">°F</option>
+          </select>
+          <select value="OWM" onChange={selectSource}>
+            <option value="OWM">OWM</option>
+            <option value="DS">DS</option>
           </select>
           </Collapse>
         </Navbar>
