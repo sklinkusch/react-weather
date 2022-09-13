@@ -117,38 +117,12 @@ export function HeaderDarkSky() {
           </NavbarBrand>
           <NavbarToggler onClick={toggleOpen} />
           <Collapse isOpen={isOpen} navbar>
-          <input
-            type="text"
-            name="placefilter"
-            style={{ width: "228px" }}
-            ref={inputRef}
-            onInput={filterData}
-          />
-          <select
-            name="placeselect"
-            id="placeselect"
-            style={{ width: "333px" }}
-            value={context.selectedCity}
-            onChange={selectCity}
-          >
-            {viewData.map((city, index) => {
-              return (
-                <option key={index} value={city.key}>
-                  {city.dropname}
-                </option>
-              )
-            })}
-          </select>
-          &nbsp;
-          <button onClick={context.handleClick}>Refresh</button>
-          <select value={context.unit} onChange={selectUnit}>
-            <option value="celsius">°C</option>
-            <option value="fahrenheit">°F</option>
-          </select>
-          <select value="DS" onChange={selectSource}>
-            <option value="DS">DS</option>
-            <option value="OWM">OWM</option>
-          </select>
+            <InputBox inputRef={inputRef} onInputHandler={filterData} />
+            <PlaceSelector city={context.selectedCity} onChangeHandler={selectCity} cityList={viewData} />
+            &nbsp;
+            <RefreshButton onClickHandler={context.handleClick} />
+            <UnitSelector unit={context.unit} onSelectHandler={selectUnit} />
+            <SourceSelector source="OWM" onChangeHandler={selectSource} />
           </Collapse>
         </Navbar>
       )}
@@ -215,41 +189,116 @@ export function HeaderOWM() {
           </NavbarBrand>
           <NavbarToggler onClick={toggleOpen} />
           <Collapse isOpen={isOpen} navbar>
-          <input
-            type="text"
-            name="placefilter"
-            style={{ width: "228px" }}
-            ref={inputRef}
-            onInput={filterData}
-          />
-          <select
-            name="placeselect"
-            id="placeselect"
-            style={{ width: "333px" }}
-            value={context.selectedCity}
-            onChange={selectCity}
-          >
-            {viewData.map((city, index) => {
-              return (
-                <option key={index} value={city.key}>
-                  {city.dropname}
-                </option>
-              )
-            })}
-          </select>
-          &nbsp;
-          <button onClick={context.handleClick}>Refresh</button>
-          <select value={context.unit} onChange={selectUnit}>
-            <option value="celsius">°C</option>
-            <option value="fahrenheit">°F</option>
-          </select>
-          <select value="OWM" onChange={selectSource}>
-            <option value="OWM">OWM</option>
-            <option value="DS">DS</option>
-          </select>
+            <InputBox inputRef={inputRef} onInputHandler={filterData} />
+            <PlaceSelector city={context.selectedCity} onChangeHandler={selectCity} cityList={viewData} />
+            &nbsp;
+            <RefreshButton onClickHandler={context.handleClick} />
+            <UnitSelector unit={context.unit} onSelectHandler={selectUnit} />
+            <SourceSelector source="OWM" onChangeHandler={selectSource} />
           </Collapse>
         </Navbar>
       )}
     </OWMContext.Consumer>
+  )
+}
+
+function InputBox ({ inputRef, onInputHandler }) {
+  return (
+    <input
+      type="text"
+      name="placefilter"
+      ref={inputRef}
+      onInput={onInputHandler}
+      style={{ 
+        width: "228px",
+        height: "30px",
+        backgroundColor: "#444444",
+        color: "white",
+        border: "2px solid white",
+        marginInline: "8px"
+      }}
+    />
+  )
+}
+
+function PlaceSelector ({ city, onChangeHandler, cityList }) {
+  return (
+    <select
+      name="placeselect"
+      id="placeselect"
+      value={city}
+      onChange={onChangeHandler}
+      style={{
+        width: "333px",
+        height: "30px",
+        backgroundColor: "transparent",
+        color: "white",
+        border: "2px solid white",
+        marginInline: "8px"
+      }}
+    >
+      {Array.isArray(cityList) && cityList.length > 0 && cityList.map(singleCity => (
+        <option value={singleCity.key} style={{ color: "white" }}>{singleCity.dropname}</option>
+      ))}
+    </select>
+  )
+}
+
+function RefreshButton ({ onClickHandler }) {
+  return (
+    <button 
+      onClick={onClickHandler} 
+      style={{ 
+        border: "2px solid white", 
+        backgroundColor: "transparent", 
+        color: "white", 
+        marginLeft: "8px", 
+        marginRight: "8px", 
+        height: "30px", 
+        width: "70px" 
+      }}
+    >
+        Refresh
+    </button>
+  )
+}
+
+function UnitSelector ({ unit, onSelectHandler }) {
+  return (
+    <select 
+      value={unit} 
+      onChange={onSelectHandler}
+      style={{
+        height: "30px",
+        backgroundColor: "transparent",
+        border: "2px solid white",
+        color: "white",
+        marginInline: "8px",
+        width: "50px"
+      }}
+    >
+      <option value="celsius">°C</option>
+      <option value="fahrenheit">°F</option>
+    </select>
+  )
+}
+
+function SourceSelector ({ source, onChangeHandler }) {
+  const sources = source === 'DS' ? ['DS', 'OWM'] : ['OWM', 'DS']
+  return (
+    <select 
+      value={source} 
+      onChange={onChangeHandler}
+      style={{
+        height: "30px",
+        backgroundColor: "transparent",
+        border: "2px solid white",
+        color: "white",
+        marginInline: "8px",
+        width: "75px"
+      }}
+    >
+      {sources.map(singleSource => (<option value={singleSource} key={singleSource}>{singleSource}</option>))}
+    </select>
   )
 }
