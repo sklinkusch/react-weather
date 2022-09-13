@@ -49,8 +49,8 @@ function App() {
       <Router>
         <Suspense>
           <Routes>
-            <Route path='/darksky' element={<DarkSky />} />
-            <Route path='/owm' element={<OpenWeatherMap />} />
+            <Route path='/darksky/:id' element={<DarkSky />} />
+            <Route path='/owm/:id' element={<OpenWeatherMap />} />
             <Route path='' element={<DarkSky />} />
             <Route path='*' element={<DarkSky />} />
           </Routes>
