@@ -122,7 +122,7 @@ export function HeaderDarkSky() {
             &nbsp;
             <RefreshButton onClickHandler={context.handleClick} />
             <UnitSelector unit={context.unit} onSelectHandler={selectUnit} />
-            <SourceSelector source="OWM" onChangeHandler={selectSource} />
+            <SourceSelector source="DS" onChangeHandler={selectSource} />
           </Collapse>
         </Navbar>
       )}
