@@ -69,6 +69,9 @@ export function HeaderDarkSky() {
     const selection = params.hasOwnProperty("id") && typeof params.id === 'string' && params.id.length > 0
       ? weatherContext.cities.find(city => city.key === params.id)
       : weatherContext.cities.find(city => city.key === "2950159")
+    if (!params.hasOwnProperty("id") || typeof params.id !== 'string' || params.id.length <= 0) {
+      navigate(`/darksky/2950159`)
+    }
     weatherContext.handleChange(selection)
     const remainingCities = weatherContext.cities.filter(city => city.key !== selection.key)
     setViewData([selection, ...remainingCities])
@@ -140,7 +143,10 @@ export function HeaderOWM() {
   useEffect(() => {
     const selection = params.hasOwnProperty("id") && typeof params.id === 'string' && params.id.length > 0
       ? weatherContext.cities.find(city => city.key === params.id)
-      : weatherContext.cities.find(city => city.key === "2950159")
+      : weatherContext.cities.find(city => city.key === "2950159")``
+    if (!params.hasOwnProperty("id") || typeof params.id !== 'string' || params.id.length <= 0) {
+      navigate(`/owm/2950159`)
+    }
     weatherContext.handleChange(selection)
     const remainingCities = weatherContext.cities.filter(city => city.key !== selection.key)
     setViewData([selection, ...remainingCities])
