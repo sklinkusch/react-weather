@@ -13,7 +13,7 @@
     "cities15000-json": "^1.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "6.3.0",
+    "react-router-dom": "6.8.1",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.0.2",
     "weather-icons-react": "1.2.0"
