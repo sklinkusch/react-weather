@@ -143,7 +143,7 @@ export function HeaderOWM() {
   useEffect(() => {
     const selection = params.hasOwnProperty("id") && typeof params.id === 'string' && params.id.length > 0
       ? weatherContext.cities.find(city => city.key === params.id)
-      : weatherContext.cities.find(city => city.key === "2950159")``
+      : weatherContext.cities.find(city => city.key === "2950159")
     if (!params.hasOwnProperty("id") || typeof params.id !== 'string' || params.id.length <= 0) {
       navigate(`/owm/2950159`)
     }
@@ -168,11 +168,11 @@ export function HeaderOWM() {
     const unit = e.target.value
     weatherContext.setUnit(unit)
   }
-  const selectSource = (e) => {
-    const nextSrc = e.target.value
-    const key = weatherContext.selectedCity.key
-    if (nextSrc === "DS") navigate(`/darksky/${key}`)
-  }
+  // const selectSource = (e) => {
+  //   const nextSrc = e.target.value
+  //   const key = weatherContext.selectedCity.key
+  //   if (nextSrc === "DS") navigate(`/darksky/${key}`)
+  // }
   const filterData = (e) => {
     const filterValue = e.target.value
     const firstFilteredCity = weatherContext.cities.filter(
@@ -200,7 +200,7 @@ export function HeaderOWM() {
             &nbsp;
             <RefreshButton onClickHandler={context.handleClick} />
             <UnitSelector unit={context.unit} onSelectHandler={selectUnit} />
-            <SourceSelector source="OWM" onChangeHandler={selectSource} />
+            {/* <SourceSelector source="OWM" onChangeHandler={selectSource} /> */}
           </Collapse>
         </Navbar>
       )}
@@ -244,7 +244,7 @@ function PlaceSelector ({ city, onChangeHandler, cityList }) {
       }}
     >
       {Array.isArray(cityList) && cityList.length > 0 && cityList.map(singleCity => (
-        <option value={singleCity.key} style={{ color: "white" }}>{singleCity.dropname}</option>
+        <option value={singleCity.key} key={singleCity.key} style={{ color: "white" }}>{singleCity.dropname}</option>
       ))}
     </select>
   )
