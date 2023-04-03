@@ -1,13 +1,14 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { DarkSkyProvider, OWMProvider } from "../context/AppProvider"
+import { OWMProvider } from "../context/AppProvider"
 import '../styles/App.css';
-import { HeaderDarkSky, HeaderOWM } from './Header';
+import { HeaderOWM } from './Header';
 import TitleImage from './TitleImage';
-import { CurrentDarkSky, CurrentOWM } from './Current';
-import { HourlyDarkSky, HourlyOWM } from './Hourly';
-import { DailyDarkSky, DailyOWM } from './Daily';
+import { CurrentOWM } from './Current';
+import { HourlyOWM } from './Hourly';
+import { DailyOWM } from './Daily';
 
+/*
 function DarkSky() {
   return (
     <DarkSkyProvider>
@@ -18,7 +19,7 @@ function DarkSky() {
       <HourlyDarkSky />
     </DarkSkyProvider>
   )
-}
+}*/
 
 function OpenWeatherMap() {
   return (
@@ -49,10 +50,10 @@ function App() {
       <Router {...pathProps}>
         <Suspense>
           <Routes>
-            <Route path='/darksky/:id' element={<DarkSky />} />
+            {/*<Route path='/darksky/:id' element={<DarkSky />} />*/}
             <Route path='/owm/:id' element={<OpenWeatherMap />} />
-            <Route path='' element={<DarkSky />} />
-            <Route path='*' element={<DarkSky />} />
+            <Route path='' element={<OpenWeatherMap />} />
+            <Route path='*' element={<OpenWeatherMap />} />
           </Routes>
         </Suspense>
       </Router>
